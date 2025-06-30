@@ -1,0 +1,415 @@
+/**
+ * تصميم نظام الحماية والمصادقة
+ */
+
+/* تصميم رسالة منع الوصول */
+.access-denied-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+}
+
+.access-denied-modal {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.access-denied-icon {
+    font-size: 4rem;
+    color: #dc3545;
+    margin-bottom: 1rem;
+}
+
+.access-denied-modal h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.access-denied-modal p {
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.access-denied-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.access-denied-actions .btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.access-denied-actions .btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.access-denied-actions .btn-primary:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+.access-denied-actions .btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.access-denied-actions .btn-secondary:hover {
+    background: #545b62;
+    transform: translateY(-2px);
+}
+
+/* تصميم عناصر الواجهة المشروطة */
+[data-auth-required] {
+    transition: opacity 0.3s ease;
+}
+
+[data-guest-only] {
+    transition: opacity 0.3s ease;
+}
+
+[data-admin-only] {
+    transition: opacity 0.3s ease;
+}
+
+[data-scholar-only] {
+    transition: opacity 0.3s ease;
+}
+
+/* تصميم شارة الدور */
+.user-role-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.user-role-badge.admin {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+}
+
+.user-role-badge.scholar {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    color: white;
+}
+
+.user-role-badge.member {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+}
+
+.user-role-badge.guest {
+    background: linear-gradient(135deg, #6c757d, #545b62);
+    color: white;
+}
+
+/* تصميم شريط المستخدم */
+.user-info-bar {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.user-details h4 {
+    margin: 0;
+    color: #333;
+    font-size: 1rem;
+}
+
+.user-details p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* تصميم أزرار الحماية */
+.auth-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.auth-button.login {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    color: white;
+}
+
+.auth-button.login:hover {
+    background: linear-gradient(135deg, #1e7e34, #155724);
+    transform: translateY(-2px);
+}
+
+.auth-button.logout {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+}
+
+.auth-button.logout:hover {
+    background: linear-gradient(135deg, #c82333, #a71e2a);
+    transform: translateY(-2px);
+}
+
+/* تصميم رسائل الحالة */
+.auth-status-message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+}
+
+.auth-status-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.auth-status-message.warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.auth-status-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.auth-status-message i {
+    font-size: 1.2rem;
+}
+
+/* تصميم محمول */
+@media (max-width: 768px) {
+    .access-denied-modal {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .access-denied-actions {
+        flex-direction: column;
+    }
+    
+    .access-denied-actions .btn {
+        width: 100%;
+    }
+    
+    .user-info-bar {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .auth-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* تأثيرات التحميل */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* تصميم المستخدمين التجريبيين */
+.test-users-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+}
+
+.test-users-header h4 {
+    color: #495057;
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.test-users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.test-user {
+    padding: 0.75rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    font-size: 0.9rem;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.test-user:hover {
+    background: #f8f9fa;
+    border-color: #007bff;
+    transform: translateY(-1px);
+}
+
+.test-user strong {
+    color: #007bff;
+    margin-left: 0.5rem;
+}
+
+/* رسائل المصادقة */
+.auth-message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-message-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.auth-message-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.auth-message-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.auth-message i {
+    font-size: 1.2rem;
+}
+
+/* تحسين معلومات المستخدم في الشريط العلوي */
+.user-info-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.user-info-nav [data-user-name] {
+    font-weight: 600;
+    color: #333;
+}
+
+.user-info-nav .user-role-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+}

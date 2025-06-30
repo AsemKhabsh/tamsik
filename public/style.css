@@ -1,0 +1,1554 @@
+/* ألوان أساسية متناسقة مع هوية الموقع الإسلامي */
+:root {
+    --primary-color: #1d8a4e;     /* أخضر إسلامي */
+    --secondary-color: #d4af37;   /* ذهبي */
+    --dark-color: #1a3a4a;        /* أزرق داكن */
+    --light-color: #f8f9fa;       /* أبيض فاتح */
+    --accent-color: #c75c5c;      /* أحمر طوبي */
+    --text-color: #333;           /* لون النص الأساسي */
+    --text-light: #f8f9fa;        /* لون النص الفاتح */
+    --border-color: #e0e0e0;      /* لون الحدود */
+    --bg-light: #f5f5f5;          /* خلفية فاتحة */
+    --bg-dark: #0a2e38;           /* خلفية داكنة */
+}
+
+/* إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Amiri', 'Scheherazade New', serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--light-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    border: 2px solid var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: transparent;
+    color: var(--secondary-color);
+}
+
+/* تنسيق الهيدر والقائمة */
+header {
+    background-color: var(--dark-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    padding: 15px 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.slogan {
+    color: var(--light-color);
+    font-style: italic;
+    margin-right: 10px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li:last-child {
+    margin-right: 0;
+}
+
+.nav-links a {
+    color: var(--light-color);
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.nav-links a i {
+    margin-left: 5px;
+}
+
+/* قائمة المستخدم المنسدلة */
+.user-menu {
+    position: relative;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    min-width: 200px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.user-menu:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background: var(--bg-light);
+    color: var(--primary-color);
+}
+
+/* قسم الترحيب (Hero Section) */
+.hero-section {
+    background: linear-gradient(rgba(26, 58, 74, 0.8), rgba(26, 58, 74, 0.8)), url('images/mosque-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--text-light);
+    padding: 80px 0;
+    margin-bottom: 40px;
+}
+
+.hero-section .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-content {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 5px solid var(--secondary-color);
+}
+
+/* تنسيق الأقسام العامة */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--dark-color);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* قسم الميزات */
+.features-section {
+    padding: 60px 0;
+    background-color: var(--bg-light);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+}
+
+/* قسم أقسام الموقع */
+.site-sections {
+    padding: 60px 0;
+}
+
+.sections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.section-card {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: block;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.section-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.section-card h3 {
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+
+/* قسم آخر المحتويات */
+.latest-content {
+    padding: 60px 0;
+    background-color: var(--bg-light);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.content-card {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.content-info {
+    padding: 20px;
+}
+
+.content-info h3 {
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+
+.content-meta {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.content-excerpt {
+    margin-bottom: 15px;
+}
+
+.read-more {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.read-more:hover {
+    color: var(--secondary-color);
+}
+
+/* قسم النشرة البريدية */
+.newsletter-section {
+    background-color: var(--dark-color);
+    color: var(--text-light);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.newsletter-section h2 {
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+}
+
+.newsletter-section p {
+    margin-bottom: 25px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+    border-radius: 0 5px 5px 0;
+    padding: 12px 20px;
+    border: none;
+}
+
+/* تنسيق الفوتر */
+footer {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding-top: 60px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-about h3, .footer-links h3, .footer-contact h3 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-about h3::after, .footer-links h3::after, .footer-contact h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: var(--text-light);
+}
+
+.footer-links ul li a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-contact p {
+    margin-bottom: 15px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* تجاوب الموقع مع الشاشات المختلفة */
+@media (max-width: 992px) {
+    .navbar .container {
+        flex-direction: column;
+    }
+
+    .logo, .slogan {
+        margin-bottom: 15px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-section .container {
+        flex-direction: column;
+    }
+
+    .hero-content, .hero-image {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+
+    .cta-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .features-grid, .sections-grid, .content-grid, .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form input {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .newsletter-form button {
+        border-radius: 5px;
+        width: 100%;
+    }
+}
+/* أنماط إضافية لصفحة الخطب الجاهزة */
+
+/* رأس الصفحة */
+.page-header {
+    background: linear-gradient(rgba(26, 58, 74, 0.8), rgba(26, 58, 74, 0.8)), url('images/2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--text-light);
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+}
+
+/* قسم البحث والتصفية */
+.search-filter-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+}
+
+.search-box {
+    display: flex;
+    flex: 1;
+    max-width: 500px;
+    margin-left: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+}
+
+.search-box button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 0 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+}
+
+.filter-group label {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.filter-group select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--light-color);
+}
+
+/* قسم إضافة خطبة جديدة */
+.add-sermon-section {
+    margin-bottom: 40px;
+}
+
+.add-sermon-card {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 2px dashed var(--primary-color);
+}
+
+.add-sermon-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.add-sermon-card p {
+    margin-bottom: 20px;
+}
+
+.login-note {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.login-note p {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* قسم الخطب */
+.sermons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.sermon-card {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid var(--border-color);
+}
+
+.sermon-card:hover {
+    transform: translateY(-5px);
+}
+
+.sermon-card.featured {
+    border: 2px solid var(--secondary-color);
+}
+
+.sermon-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: var(--bg-light);
+}
+
+.sermon-category {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.featured-badge {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.sermon-title {
+    padding: 15px 15px 10px;
+    font-size: 1.3rem;
+    color: var(--dark-color);
+}
+
+.sermon-meta {
+    padding: 0 15px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.sermon-excerpt {
+    padding: 0 15px 15px;
+    flex-grow: 1;
+}
+
+.sermon-footer {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.sermon-stats {
+    display: flex;
+    gap: 15px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* تصنيفات الخطب */
+.sermon-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.category-btn {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover, .category-btn.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+}
+
+/* أزرار التنقل بين الصفحات */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.pagination a.active, .pagination a:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+}
+
+.pagination a.next {
+    padding: 8px 20px;
+}
+
+/* تجاوب الموقع مع الشاشات المختلفة */
+@media (max-width: 992px) {
+    .search-filter-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        max-width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .filter-options {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    .sermons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-options {
+        flex-direction: column;
+    }
+
+    .sermon-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .sermon-stats {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* أنماط صفحات تسجيل الدخول وإنشاء الحساب */
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.auth-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.auth-header p {
+    color: #777;
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.auth-form input,
+.auth-form select {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.auth-form input:focus,
+.auth-form select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remember-me,
+.terms-check {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input,
+.terms-check input {
+    width: auto;
+    margin-left: 8px;
+}
+
+.forgot-password {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.btn-block {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+}
+
+.social-login {
+    margin-top: 30px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.social-login p {
+    margin-bottom: 15px;
+    color: #777;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-google {
+    background-color: #fff;
+    color: #DB4437;
+    border: 1px solid #DB4437;
+}
+
+.btn-google:hover {
+    background-color: #DB4437;
+    color: #fff;
+}
+
+.btn-facebook {
+    background-color: #fff;
+    color: #4267B2;
+    border: 1px solid #4267B2;
+}
+
+.btn-facebook:hover {
+    background-color: #4267B2;
+    color: #fff;
+}
+
+.auth-footer {
+    margin-top: 30px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.auth-footer a {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* تجاوب صفحات تسجيل الدخول وإنشاء الحساب */
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+    }
+
+    .btn-social {
+        width: 100%;
+    }
+}
+/* أنماط صفحة إضافة خطبة جديدة */
+.add-sermon-form-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 60px;
+}
+
+.form-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+}
+
+.form-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.form-intro {
+    text-align: center;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.char-count {
+    text-align: left;
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 5px;
+}
+
+.field-hint {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 5px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.form-actions .btn {
+    flex: 1;
+}
+
+.submission-message {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.success-message {
+    background-color: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.success-message i {
+    font-size: 3rem;
+    color: #4caf50;
+    margin-bottom: 15px;
+}
+
+.success-message h3 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.success-message p {
+    margin-bottom: 20px;
+}
+
+.success-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* تجاوب صفحة إضافة خطبة */
+@media (max-width: 768px) {
+    .form-card {
+        padding: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .success-actions {
+        flex-direction: column;
+    }
+}
+/* أنماط صفحة تفاصيل الخطبة */
+.sermon-details-container {
+    padding: 20px 0 60px;
+}
+
+.sermon-details-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.sermon-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sermon-info {
+    flex: 1;
+}
+
+.sermon-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.sermon-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--dark-color);
+}
+
+.sermon-stats {
+    display: flex;
+    gap: 20px;
+    color: #777;
+}
+
+.sermon-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.sermon-body {
+    margin-bottom: 30px;
+}
+
+.sermon-content {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.sermon-content p {
+    margin-bottom: 20px;
+}
+
+.sermon-footer {
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.sermon-references, .sermon-tags-section {
+    margin-bottom: 30px;
+}
+
+.sermon-references h3, .sermon-tags-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.references-list {
+    padding-right: 20px;
+    line-height: 1.6;
+}
+
+.references-list li {
+    margin-bottom: 10px;
+}
+
+.sermon-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    background-color: var(--light-accent);
+    color: var(--primary-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.error-message {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.error-message i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.error-message h2 {
+    margin-bottom: 15px;
+}
+
+.error-message p {
+    margin-bottom: 30px;
+    color: #777;
+}
+
+/* أنماط صفحة تفاصيل الخطبة */
+.sermon-details-container {
+    padding: 20px 0 60px;
+}
+
+.sermon-details-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.sermon-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sermon-info {
+    flex: 1;
+}
+
+.sermon-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.sermon-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--dark-color);
+}
+
+.sermon-stats {
+    display: flex;
+    gap: 20px;
+    color: #777;
+}
+
+.sermon-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* أنماط زر التحميل مع الخيارات */
+.download-options {
+    position: relative;
+    display: inline-block;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.download-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--light-color);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    z-index: 10;
+    display: none;
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.download-options:hover .download-menu {
+    display: block;
+}
+
+.download-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    color: var(--text-color);
+    transition: all 0.3s;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.download-menu-item:last-child {
+    border-bottom: none;
+}
+
+.download-menu-item:hover {
+    background-color: var(--bg-light);
+    color: var(--primary-color);
+}
+
+.download-menu-item i {
+    width: 20px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.sermon-body {
+    margin-bottom: 30px;
+}
+
+.sermon-content {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.sermon-content p {
+    margin-bottom: 20px;
+}
+
+.sermon-footer {
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* تجاوب صفحة تفاصيل الخطبة */
+@media (max-width: 768px) {
+    .sermon-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .sermon-actions {
+        width: 100%;
+    }
+
+    .sermon-actions .btn {
+        flex: 1;
+    }
+
+    .download-menu {
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+}
+
+/* Style for the delete button */
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    margin-left: 10px;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+/* ... existing code ... */
+
+.sermon-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* ... existing code ... */
+
+/* ... existing code ... */
+
+/* أنماط زر الحذف */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.sermon-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* ... existing code ... */

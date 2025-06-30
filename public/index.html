@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمسيك - الرئيسية</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/auth-protection.css">
+    <!-- يمكنك إضافة خطوط عربية هنا لاحقًا -->
+     <!-- الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">تمسيك</a>
+                <p class="slogan">"والذين يمسكون بالكتاب..."</p>
+                <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="sermons.html"><i class="fas fa-book-open"></i> الخطب الجاهزة</a></li>
+                    <li data-auth-required><a href="prepare_sermon.html"><i class="fas fa-pen"></i> إعداد خطبة</a></li>
+                    <li><a href="scholars.html"><i class="fas fa-user-graduate"></i> العلماء</a></li>
+                    <li><a href="thinkers.html"><i class="fas fa-lightbulb"></i> المفكرون والدعاة</a></li>
+                    <li><a href="lectures.html"><i class="fas fa-microphone"></i> المحاضرات والدروس</a></li>
+                    <li data-guest-only><a href="login.html"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</a></li>
+                    <li data-guest-only><a href="register.html"><i class="fas fa-user-plus"></i> إنشاء حساب</a></li>
+                    <li data-auth-required><a href="profile.html"><i class="fas fa-user"></i> الملف الشخصي</a></li>
+                    <li data-admin-only><a href="admin.html"><i class="fas fa-cogs"></i> لوحة الإدارة</a></li>
+                    <li data-auth-required><a href="#" data-logout><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a></li>
+                    <li data-auth-required>
+                        <div class="user-info-nav">
+                            <span data-user-name>مستخدم</span>
+                            <span class="user-role-badge" data-user-role>عضو</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero-section">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>منصة إسلامية موثوقة</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="highlight">تمسيك</span> - منصة العلماء اليمنيين
+                </h1>
+                <p class="hero-description">
+                    منصة متكاملة تجمع بين الخطب الجاهزة، وأدوات إعداد الخطب، وفتاوى العلماء اليمنيين،
+                    ومحاضرات الدعاة في جميع محافظات اليمن السعيد
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="500">0</span>
+                        <span class="stat-label">خطبة جاهزة</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="50">0</span>
+                        <span class="stat-label">عالم يمني</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="1000">0</span>
+                        <span class="stat-label">فتوى شرعية</span>
+                    </div>
+                </div>
+                <div class="cta-buttons">
+                    <a href="prepare_sermon.html" class="btn btn-primary btn-large" data-auth-required>
+                        <i class="fas fa-pen"></i>
+                        ابدأ في إعداد خطبة
+                    </a>
+                    <a href="login.html" class="btn btn-primary btn-large" data-guest-only>
+                        <i class="fas fa-sign-in-alt"></i>
+                        سجل دخولك لإعداد خطبة
+                    </a>
+                    <a href="sermons.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-book-open"></i>
+                        تصفح الخطب الجاهزة
+                    </a>
+                </div>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>محتوى موثوق ومراجع</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>سهولة في الاستخدام</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>تحديث مستمر</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-container">
+                    <img src="images/musq.webp" alt="صورة مسجد" class="img-responsive">
+                    <div class="image-overlay">
+                        <div class="floating-card">
+                            <i class="fas fa-mosque"></i>
+                            <h4>أكثر من 500 خطبة</h4>
+                            <p>جاهزة للاستخدام</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container page-content">
+        <!-- قسم الميزات -->
+        <section class="features-section">
+            <h2 class="section-title">ما يميزنا</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-mosque feature-icon"></i>
+                    <h3>خطب جمعة متنوعة</h3>
+                    <p>مجموعة متنوعة من خطب الجمعة الجاهزة في مختلف المواضيع</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-edit feature-icon"></i>
+                    <h3>إعداد خطب مخصصة</h3>
+                    <p>أدوات مساعدة لإعداد خطب مخصصة بسهولة وفعالية</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users feature-icon"></i>
+                    <h3>آراء العلماء اليمنيين</h3>
+                    <p>مجموعة من فتاوى وآراء كبار العلماء اليمنيين في مختلف القضايا الشرعية</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم أقسام الموقع -->
+        <section class="site-sections">
+            <h2 class="section-title">أقسام الموقع</h2>
+            <div class="sections-grid">
+                <a href="sermons.html" class="section-card">
+                    <i class="fas fa-book-open section-icon"></i>
+                    <h3>الخطب الجاهزة</h3>
+                    <p>تصفح مجموعة متنوعة من الخطب الجاهزة</p>
+                </a>
+                <a href="prepare_sermon.html" class="section-card" data-auth-required>
+                    <i class="fas fa-pen section-icon"></i>
+                    <h3>إعداد خطبة</h3>
+                    <p>ابدأ في إعداد خطبتك الخاصة</p>
+                </a>
+                <a href="login.html" class="section-card" data-guest-only>
+                    <i class="fas fa-sign-in-alt section-icon"></i>
+                    <h3>سجل دخولك</h3>
+                    <p>سجل دخولك لإعداد خطبتك الخاصة</p>
+                </a>
+                <a href="scholars.html" class="section-card">
+                    <i class="fas fa-user-graduate section-icon"></i>
+                    <h3>العلماء اليمنيين</h3>
+                    <p>اطلع على فتاوى وآراء كبار العلماء اليمنيين</p>
+                </a>
+                <a href="thinkers.html" class="section-card">
+                    <i class="fas fa-lightbulb section-icon"></i>
+                    <h3>المفكرون والدعاة</h3>
+                    <p>اقرأ مقالات المفكرين والدعاة المعاصرين</p>
+                </a>
+                <a href="lectures.html" class="section-card">
+                    <i class="fas fa-microphone section-icon"></i>
+                    <h3>المحاضرات والدروس</h3>
+                    <p>اعرف مواعيد المحاضرات والدروس في محافظات اليمن</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- قسم الإحصائيات -->
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-number" data-count="500">0</h3>
+                        <p class="stat-label">خطبة جاهزة</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-number" data-count="50">0</h3>
+                        <p class="stat-label">عالم يمني</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-number" data-count="1000">0</h3>
+                        <p class="stat-label">فتوى شرعية</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-number" data-count="10000">0</h3>
+                        <p class="stat-label">مستخدم نشط</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم شهادات المستخدمين -->
+        <section class="testimonials-section">
+            <h2 class="section-title">ماذا يقول مستخدمونا</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"موقع تمسيك ساعدني كثيراً في إعداد خطب الجمعة. المحتوى موثوق والأدوات سهلة الاستخدام."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>أحمد محمد</h4>
+                            <p>إمام وخطيب</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"منصة رائعة تجمع كل ما يحتاجه الباحث في العلوم الشرعية. الفتاوى موثقة والمحتوى متنوع."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>فاطمة علي</h4>
+                            <p>باحثة شرعية</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"أستخدم الموقع بانتظام للحصول على المحاضرات والدروس. التنظيم ممتاز والمحتوى مفيد جداً."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>محمد السعيد</h4>
+                            <p>طالب علم</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم آخر المحتويات -->
+        <section class="latest-content">
+            <h2 class="section-title">آخر المحتويات</h2>
+            <div class="content-tabs">
+                <button class="tab-btn active" data-tab="sermons">الخطب الجديدة</button>
+                <button class="tab-btn" data-tab="fatwas">الفتاوى الحديثة</button>
+                <button class="tab-btn" data-tab="articles">المقالات</button>
+            </div>
+
+            <div class="tab-content active" id="sermons-tab">
+                <div class="content-grid">
+                    <div class="content-card">
+                        <div class="content-image">
+                            <img src="images/musq.webp" alt="خطبة جديدة">
+                            <div class="content-badge">خطبة</div>
+                        </div>
+                        <div class="content-info">
+                            <h3>فضل شهر رمضان</h3>
+                            <p class="content-meta">
+                                <span><i class="fas fa-user"></i> الشيخ أحمد محمد</span>
+                                <span><i class="fas fa-calendar"></i> 15 شعبان 1446</span>
+                            </p>
+                            <p class="content-excerpt">خطبة عن فضائل شهر رمضان وأهمية استقباله بالعمل الصالح والتوبة النصوح...</p>
+                            <div class="content-stats">
+                                <span><i class="fas fa-eye"></i> 1,250</span>
+                                <span><i class="fas fa-download"></i> 89</span>
+                            </div>
+                            <a href="#" class="read-more">قراءة المزيد</a>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <div class="content-image">
+                            <img src="images/2.jpg" alt="خطبة جديدة">
+                            <div class="content-badge">خطبة</div>
+                        </div>
+                        <div class="content-info">
+                            <h3>بر الوالدين في الإسلام</h3>
+                            <p class="content-meta">
+                                <span><i class="fas fa-user"></i> الشيخ محمد علي</span>
+                                <span><i class="fas fa-calendar"></i> 12 شعبان 1446</span>
+                            </p>
+                            <p class="content-excerpt">خطبة تتناول أهمية بر الوالدين وعظم أجره في الإسلام مع الأدلة الشرعية...</p>
+                            <div class="content-stats">
+                                <span><i class="fas fa-eye"></i> 980</span>
+                                <span><i class="fas fa-download"></i> 67</span>
+                            </div>
+                            <a href="#" class="read-more">قراءة المزيد</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="fatwas-tab">
+                <div class="content-grid">
+                    <div class="content-card">
+                        <div class="content-image">
+                            <img src="images/1.webp" alt="فتوى جديدة">
+                            <div class="content-badge">فتوى</div>
+                        </div>
+                        <div class="content-info">
+                            <h3>حكم صلاة الجماعة في المسجد</h3>
+                            <p class="content-meta">
+                                <span><i class="fas fa-user"></i> الشيخ عبد العزيز بن باز</span>
+                                <span><i class="fas fa-calendar"></i> 10 شعبان 1446</span>
+                            </p>
+                            <p class="content-excerpt">فتوى شرعية تتناول حكم صلاة الجماعة في المسجد وأدلتها من الكتاب والسنة...</p>
+                            <div class="content-stats">
+                                <span><i class="fas fa-eye"></i> 2,100</span>
+                                <span><i class="fas fa-thumbs-up"></i> 156</span>
+                            </div>
+                            <a href="#" class="read-more">قراءة المزيد</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="articles-tab">
+                <div class="content-grid">
+                    <div class="content-card">
+                        <div class="content-image">
+                            <img src="images/musq.webp" alt="مقال جديد">
+                            <div class="content-badge">مقال</div>
+                        </div>
+                        <div class="content-info">
+                            <h3>التربية الإسلامية في العصر الحديث</h3>
+                            <p class="content-meta">
+                                <span><i class="fas fa-user"></i> د. محمد الغزالي</span>
+                                <span><i class="fas fa-calendar"></i> 8 شعبان 1446</span>
+                            </p>
+                            <p class="content-excerpt">مقال يتناول تحديات التربية الإسلامية في ظل التطور التكنولوجي والعولمة...</p>
+                            <div class="content-stats">
+                                <span><i class="fas fa-eye"></i> 1,580</span>
+                                <span><i class="fas fa-share"></i> 89</span>
+                            </div>
+                            <a href="#" class="read-more">قراءة المزيد</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>اشترك في نشرتنا البريدية</h2>
+            <p>احصل على آخر الخطب والمحاضرات مباشرة في بريدك الإلكتروني</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
+                <button type="submit" class="btn btn-primary">اشتراك</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>عن تمسيك</h3>
+                    <p>منصة إسلامية شاملة تهدف إلى مساعدة الخطباء والباحثين وعامة المسلمين في الوصول إلى محتوى إسلامي موثوق.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="sermons.html">الخطب الجاهزة</a></li>
+                        <li><a href="prepare_sermon.html">إعداد خطبة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@tamsik.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 تمسيك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- يمكنك إضافة ملفات JavaScript هنا لاحقًا -->
+    <script src="js/auth.js"></script>
+    <script src="js/simple-auth.js"></script>
+    <script src="js/auth-protection.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمسيك - المفكرون والدعاة</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/thinkers.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/auth-protection.css">
+
+    <!-- الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">تمسيك</a>
+                <p class="slogan">"والذين يمسكون بالكتاب..."</p>
+                <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="sermons.html"><i class="fas fa-book-open"></i> الخطب الجاهزة</a></li>
+                    <li><a href="prepare_sermon.html" data-auth-required="member"><i class="fas fa-pen"></i> إعداد خطبة</a></li>
+                    <li><a href="scholars.html"><i class="fas fa-user-graduate"></i> العلماء اليمنيين</a></li>
+                    <li><a href="thinkers.html" class="active"><i class="fas fa-lightbulb"></i> المفكرون والدعاة</a></li>
+                    <li><a href="lectures.html"><i class="fas fa-microphone"></i> المحاضرات والدروس</a></li>
+                </ul>
+
+                <!-- معلومات المستخدم -->
+                <div class="user-info" data-auth-only style="display: none;">
+                    <span data-user-name></span>
+                    <span class="user-role-badge" data-user-role></span>
+                    <button class="btn-logout" onclick="window.authProtection?.logout()">
+                        <i class="fas fa-sign-out-alt"></i> خروج
+                    </button>
+                </div>
+
+                <!-- أزرار تسجيل الدخول -->
+                <div class="auth-buttons" data-guest-only>
+                    <a href="login.html" class="btn btn-outline">تسجيل الدخول</a>
+                    <a href="register.html" class="btn btn-primary">إنشاء حساب</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container page-content">
+        <!-- عنوان الصفحة -->
+        <div class="page-header">
+            <div class="page-title-section">
+                <h1 class="page-title">
+                    <i class="fas fa-lightbulb"></i>
+                    المفكرون والدعاة
+                </h1>
+                <p class="page-description">
+                    اقرأ مقالات وأفكار المفكرين والدعاة المعاصرين في مختلف القضايا الإسلامية والمجتمعية
+                </p>
+            </div>
+            <div class="page-actions">
+                <button id="add-article-btn" class="btn btn-primary" style="display: none;">
+                    <i class="fas fa-plus"></i>
+                    إضافة مقال جديد
+                </button>
+            </div>
+        </div>
+
+        <!-- شريط البحث والفلترة -->
+        <div class="search-filter-section">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="ابحث في المقالات...">
+            </div>
+            <div class="filter-controls">
+                <select id="category-filter">
+                    <option value="">جميع التصنيفات</option>
+                    <option value="فكر-اسلامي">الفكر الإسلامي</option>
+                    <option value="دعوة">الدعوة والإرشاد</option>
+                    <option value="تربية">التربية الإسلامية</option>
+                    <option value="مجتمع">قضايا مجتمعية</option>
+                    <option value="شباب">الشباب والأسرة</option>
+                    <option value="معاصر">قضايا معاصرة</option>
+                </select>
+                <select id="sort-filter">
+                    <option value="newest">الأحدث</option>
+                    <option value="oldest">الأقدم</option>
+                    <option value="most-viewed">الأكثر مشاهدة</option>
+                    <option value="most-commented">الأكثر تعليقاً</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- قائمة المقالات -->
+        <div class="articles-section">
+            <div class="articles-grid" id="articles-grid">
+                <!-- سيتم ملء المقالات هنا بواسطة JavaScript -->
+            </div>
+
+            <!-- رسالة عدم وجود نتائج -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>لا توجد مقالات</h3>
+                <p>لم يتم العثور على مقالات تطابق معايير البحث</p>
+            </div>
+        </div>
+
+        <!-- الترقيم -->
+        <div class="pagination-section">
+            <div class="pagination" id="pagination">
+                <!-- سيتم إنشاء أزرار الترقيم هنا -->
+            </div>
+        </div>
+    </main>
+
+    <!-- نافذة إضافة مقال جديد -->
+    <div class="modal" id="add-article-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إضافة مقال جديد</h3>
+                <button class="close-modal" id="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="add-article-form" class="modal-body">
+                <div class="form-group">
+                    <label for="article-title">عنوان المقال</label>
+                    <input type="text" id="article-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="article-category">التصنيف</label>
+                    <select id="article-category" required>
+                        <option value="">اختر التصنيف</option>
+                        <option value="فكر-اسلامي">الفكر الإسلامي</option>
+                        <option value="دعوة">الدعوة والإرشاد</option>
+                        <option value="تربية">التربية الإسلامية</option>
+                        <option value="مجتمع">قضايا مجتمعية</option>
+                        <option value="شباب">الشباب والأسرة</option>
+                        <option value="معاصر">قضايا معاصرة</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="article-excerpt">مقتطف قصير</label>
+                    <textarea id="article-excerpt" rows="3" placeholder="اكتب مقتطفاً قصيراً عن المقال..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="article-content">محتوى المقال</label>
+                    <div class="editor-toolbar">
+                        <button type="button" class="editor-btn" data-command="bold">
+                            <i class="fas fa-bold"></i>
+                        </button>
+                        <button type="button" class="editor-btn" data-command="italic">
+                            <i class="fas fa-italic"></i>
+                        </button>
+                        <button type="button" class="editor-btn" data-command="underline">
+                            <i class="fas fa-underline"></i>
+                        </button>
+                        <button type="button" class="editor-btn" data-command="insertOrderedList">
+                            <i class="fas fa-list-ol"></i>
+                        </button>
+                        <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                            <i class="fas fa-list-ul"></i>
+                        </button>
+                    </div>
+                    <div id="article-content" class="rich-editor" contenteditable="true"
+                         placeholder="اكتب محتوى المقال هنا..."></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="article-tags">الوسوم (مفصولة بفواصل)</label>
+                    <input type="text" id="article-tags" placeholder="مثال: دعوة، تربية، شباب">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancel-article">إلغاء</button>
+                    <button type="submit" class="btn btn-primary">نشر المقال</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>عن تمسيك</h3>
+                    <p>منصة إسلامية شاملة تهدف إلى مساعدة الخطباء والباحثين وعامة المسلمين في الوصول إلى محتوى إسلامي موثوق.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="sermons.html">الخطب الجاهزة</a></li>
+                        <li><a href="prepare_sermon.html">إعداد خطبة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@tamsik.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 تمسيك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/simple-auth.js"></script>
+    <script src="js/auth-protection.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/thinkers.js"></script>
+</body>
+</html>

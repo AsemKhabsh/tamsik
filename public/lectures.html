@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمسيك - المحاضرات والدروس الدورية</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/lectures.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/auth-protection.css">
+
+    <!-- الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">تمسيك</a>
+                <p class="slogan">"والذين يمسكون بالكتاب..."</p>
+                <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="sermons.html"><i class="fas fa-book-open"></i> الخطب الجاهزة</a></li>
+                    <li><a href="prepare_sermon.html" data-auth-required="member"><i class="fas fa-pen"></i> إعداد خطبة</a></li>
+                    <li><a href="scholars.html"><i class="fas fa-user-graduate"></i> العلماء اليمنيين</a></li>
+                    <li><a href="thinkers.html"><i class="fas fa-lightbulb"></i> المفكرون والدعاة</a></li>
+                    <li><a href="lectures.html" class="active"><i class="fas fa-microphone"></i> المحاضرات والدروس</a></li>
+                </ul>
+
+                <!-- معلومات المستخدم -->
+                <div class="user-info" data-auth-only style="display: none;">
+                    <span data-user-name></span>
+                    <span class="user-role-badge" data-user-role></span>
+                    <button class="btn-logout" onclick="window.authProtection?.logout()">
+                        <i class="fas fa-sign-out-alt"></i> خروج
+                    </button>
+                </div>
+
+                <!-- أزرار تسجيل الدخول -->
+                <div class="auth-buttons" data-guest-only>
+                    <a href="login.html" class="btn btn-outline">تسجيل الدخول</a>
+                    <a href="register.html" class="btn btn-primary">إنشاء حساب</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container page-content">
+        <!-- عنوان الصفحة -->
+        <div class="page-header">
+            <div class="page-title-section">
+                <h1 class="page-title">
+                    <i class="fas fa-microphone"></i>
+                    المحاضرات والدروس الدورية
+                </h1>
+                <p class="page-description">
+                    تعرف على مواعيد المحاضرات والدروس الدورية في مختلف المحافظات والمساجد
+                </p>
+            </div>
+            <div class="page-actions">
+                <button id="add-lecture-btn" class="btn btn-primary" style="display: none;">
+                    <i class="fas fa-plus"></i>
+                    إضافة محاضرة جديدة
+                </button>
+                <button id="calendar-view-btn" class="btn btn-secondary">
+                    <i class="fas fa-calendar"></i>
+                    عرض التقويم
+                </button>
+            </div>
+        </div>
+
+        <!-- شريط البحث والفلترة -->
+        <div class="search-filter-section">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="ابحث في المحاضرات والدروس...">
+            </div>
+            <div class="filter-controls">
+                <select id="province-filter">
+                    <option value="">جميع المحافظات</option>
+                    <option value="صنعاء">صنعاء</option>
+                    <option value="عدن">عدن</option>
+                    <option value="تعز">تعز</option>
+                    <option value="الحديدة">الحديدة</option>
+                    <option value="إب">إب</option>
+                    <option value="ذمار">ذمار</option>
+                    <option value="حضرموت">حضرموت</option>
+                    <option value="لحج">لحج</option>
+                    <option value="أبين">أبين</option>
+                    <option value="شبوة">شبوة</option>
+                    <option value="المهرة">المهرة</option>
+                    <option value="حجة">حجة</option>
+                    <option value="صعدة">صعدة</option>
+                    <option value="عمران">عمران</option>
+                    <option value="الجوف">الجوف</option>
+                    <option value="مأرب">مأرب</option>
+                    <option value="البيضاء">البيضاء</option>
+                    <option value="ريمة">ريمة</option>
+                    <option value="المحويت">المحويت</option>
+                    <option value="الضالع">الضالع</option>
+                    <option value="سقطرى">سقطرى</option>
+                </select>
+                <select id="day-filter">
+                    <option value="">جميع الأيام</option>
+                    <option value="السبت">السبت</option>
+                    <option value="الأحد">الأحد</option>
+                    <option value="الاثنين">الاثنين</option>
+                    <option value="الثلاثاء">الثلاثاء</option>
+                    <option value="الأربعاء">الأربعاء</option>
+                    <option value="الخميس">الخميس</option>
+                    <option value="الجمعة">الجمعة</option>
+                </select>
+                <select id="type-filter">
+                    <option value="">جميع الأنواع</option>
+                    <option value="محاضرة">محاضرة</option>
+                    <option value="درس">درس دوري</option>
+                    <option value="ندوة">ندوة</option>
+                    <option value="دورة">دورة تدريبية</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- أزرار العرض -->
+        <div class="view-controls">
+            <button class="view-btn active" data-view="table">
+                <i class="fas fa-table"></i>
+                عرض جدولي
+            </button>
+            <button class="view-btn" data-view="cards">
+                <i class="fas fa-th-large"></i>
+                عرض البطاقات
+            </button>
+            <button class="view-btn" data-view="calendar">
+                <i class="fas fa-calendar-alt"></i>
+                عرض التقويم
+            </button>
+        </div>
+
+        <!-- العرض الجدولي -->
+        <div class="lectures-table-view" id="table-view">
+            <div class="table-container">
+                <table class="lectures-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable('province')">
+                                المحافظة
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th onclick="sortTable('lecturer')">
+                                المحاضر
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th onclick="sortTable('location')">
+                                المكان
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th onclick="sortTable('day')">
+                                اليوم
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th onclick="sortTable('time')">
+                                الوقت
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th onclick="sortTable('type')">
+                                النوع
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lectures-table-body">
+                        <!-- سيتم ملء البيانات هنا بواسطة JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- عرض البطاقات -->
+        <div class="lectures-cards-view" id="cards-view" style="display: none;">
+            <div class="lectures-grid" id="lectures-grid">
+                <!-- سيتم ملء البطاقات هنا بواسطة JavaScript -->
+            </div>
+        </div>
+
+        <!-- عرض التقويم -->
+        <div class="calendar-view" id="calendar-view" style="display: none;">
+            <div class="calendar-header">
+                <button class="calendar-nav" id="prev-month">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <h3 id="calendar-title">يناير 2025</h3>
+                <button class="calendar-nav" id="next-month">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            <div class="calendar-grid" id="calendar-grid">
+                <!-- سيتم إنشاء التقويم هنا -->
+            </div>
+        </div>
+
+        <!-- رسالة عدم وجود نتائج -->
+        <div class="no-results" id="no-results" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>لا توجد محاضرات</h3>
+            <p>لم يتم العثور على محاضرات تطابق معايير البحث</p>
+        </div>
+
+        <!-- الترقيم -->
+        <div class="pagination-section">
+            <div class="pagination" id="pagination">
+                <!-- سيتم إنشاء أزرار الترقيم هنا -->
+            </div>
+        </div>
+    </main>
+
+    <!-- نافذة إضافة محاضرة جديدة -->
+    <div class="modal" id="add-lecture-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إضافة محاضرة أو درس جديد</h3>
+                <button class="close-modal" id="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="add-lecture-form" class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="lecture-title">عنوان المحاضرة/الدرس</label>
+                        <input type="text" id="lecture-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lecture-type">النوع</label>
+                        <select id="lecture-type" required>
+                            <option value="">اختر النوع</option>
+                            <option value="محاضرة">محاضرة</option>
+                            <option value="درس">درس دوري</option>
+                            <option value="ندوة">ندوة</option>
+                            <option value="دورة">دورة تدريبية</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="lecture-lecturer">اسم المحاضر</label>
+                        <input type="text" id="lecture-lecturer" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lecture-province">المحافظة</label>
+                        <select id="lecture-province" required>
+                            <option value="">اختر المحافظة</option>
+                            <option value="صنعاء">صنعاء</option>
+                            <option value="عدن">عدن</option>
+                            <option value="تعز">تعز</option>
+                            <option value="الحديدة">الحديدة</option>
+                            <option value="إب">إب</option>
+                            <option value="ذمار">ذمار</option>
+                            <option value="حضرموت">حضرموت</option>
+                            <option value="لحج">لحج</option>
+                            <option value="أبين">أبين</option>
+                            <option value="شبوة">شبوة</option>
+                            <option value="المهرة">المهرة</option>
+                            <option value="حجة">حجة</option>
+                            <option value="صعدة">صعدة</option>
+                            <option value="عمران">عمران</option>
+                            <option value="الجوف">الجوف</option>
+                            <option value="مأرب">مأرب</option>
+                            <option value="البيضاء">البيضاء</option>
+                            <option value="ريمة">ريمة</option>
+                            <option value="المحويت">المحويت</option>
+                            <option value="الضالع">الضالع</option>
+                            <option value="سقطرى">سقطرى</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lecture-location">المكان (المسجد/القاعة)</label>
+                    <input type="text" id="lecture-location" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="lecture-day">اليوم</label>
+                        <select id="lecture-day" required>
+                            <option value="">اختر اليوم</option>
+                            <option value="السبت">السبت</option>
+                            <option value="الأحد">الأحد</option>
+                            <option value="الاثنين">الاثنين</option>
+                            <option value="الثلاثاء">الثلاثاء</option>
+                            <option value="الأربعاء">الأربعاء</option>
+                            <option value="الخميس">الخميس</option>
+                            <option value="الجمعة">الجمعة</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="lecture-time">الوقت</label>
+                        <input type="time" id="lecture-time" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lecture-description">وصف المحاضرة (اختياري)</label>
+                    <textarea id="lecture-description" rows="3" placeholder="اكتب وصفاً مختصراً عن المحاضرة..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="lecture-contact">معلومات التواصل (اختياري)</label>
+                    <input type="text" id="lecture-contact" placeholder="رقم الهاتف أو البريد الإلكتروني">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancel-lecture">إلغاء</button>
+                    <button type="submit" class="btn btn-primary">إضافة المحاضرة</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>عن تمسيك</h3>
+                    <p>منصة إسلامية شاملة تهدف إلى مساعدة الخطباء والباحثين وعامة المسلمين في الوصول إلى محتوى إسلامي موثوق.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="sermons.html">الخطب الجاهزة</a></li>
+                        <li><a href="prepare_sermon.html">إعداد خطبة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@tamsik.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 تمسيك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/simple-auth.js"></script>
+    <script src="js/auth-protection.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/lectures.js"></script>
+</body>
+</html>

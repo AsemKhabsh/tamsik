@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمسيك - من نحن</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/auth-protection.css">
+
+    <!-- الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">تمسيك</a>
+                <p class="slogan">"والذين يمسكون بالكتاب..."</p>
+                <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="sermons.html"><i class="fas fa-book-open"></i> الخطب الجاهزة</a></li>
+                    <li><a href="prepare_sermon.html" data-auth-required="member"><i class="fas fa-pen"></i> إعداد خطبة</a></li>
+                    <li><a href="scholars.html"><i class="fas fa-user-graduate"></i> العلماء اليمنيين</a></li>
+                    <li><a href="thinkers.html"><i class="fas fa-lightbulb"></i> المفكرون والدعاة</a></li>
+                    <li><a href="lectures.html"><i class="fas fa-microphone"></i> المحاضرات والدروس</a></li>
+                </ul>
+                
+                <!-- معلومات المستخدم -->
+                <div class="user-info" data-auth-only style="display: none;">
+                    <span data-user-name></span>
+                    <span class="user-role-badge" data-user-role></span>
+                    <button class="btn-logout" onclick="window.authProtection?.logout()">
+                        <i class="fas fa-sign-out-alt"></i> خروج
+                    </button>
+                </div>
+                
+                <!-- أزرار تسجيل الدخول -->
+                <div class="auth-buttons" data-guest-only>
+                    <a href="login.html" class="btn btn-outline">تسجيل الدخول</a>
+                    <a href="register.html" class="btn btn-primary">إنشاء حساب</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>من نحن</h1>
+            <p>تعرف على منصة تمسيك ورسالتها</p>
+        </div>
+    </div>
+
+    <main class="container page-content">
+        <section class="about-section">
+            <div class="about-content">
+                <div class="about-intro">
+                    <h2>عن منصة تمسيك</h2>
+                    <p class="lead">
+                        منصة تمسيك هي منصة إسلامية شاملة تهدف إلى خدمة الدين الإسلامي من خلال توفير محتوى إسلامي موثوق ومتنوع للخطباء والباحثين وعامة المسلمين.
+                    </p>
+                </div>
+
+                <div class="mission-vision">
+                    <div class="mission">
+                        <h3><i class="fas fa-bullseye"></i> رسالتنا</h3>
+                        <p>
+                            نسعى إلى تسهيل الوصول إلى المحتوى الإسلامي الأصيل والموثوق، ومساعدة الخطباء في إعداد خطب مؤثرة ومفيدة، وتوفير منصة تجمع العلماء والمفكرين المسلمين.
+                        </p>
+                    </div>
+                    
+                    <div class="vision">
+                        <h3><i class="fas fa-eye"></i> رؤيتنا</h3>
+                        <p>
+                            أن نكون المرجع الأول للمحتوى الإسلامي الرقمي، ونساهم في نشر العلم الشرعي والثقافة الإسلامية الأصيلة في العالم العربي والإسلامي.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="features">
+                    <h3>ما نقدمه</h3>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-book-open"></i>
+                            <h4>خطب جاهزة</h4>
+                            <p>مجموعة واسعة من الخطب الجاهزة في مختلف المواضيع الإسلامية</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <i class="fas fa-pen"></i>
+                            <h4>أدوات إعداد الخطب</h4>
+                            <p>أدوات متقدمة لمساعدة الخطباء في إعداد خطب مؤثرة ومنظمة</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <i class="fas fa-user-graduate"></i>
+                            <h4>قاعدة بيانات العلماء</h4>
+                            <p>معلومات شاملة عن العلماء اليمنيين والمفكرين المسلمين</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <i class="fas fa-microphone"></i>
+                            <h4>المحاضرات والدروس</h4>
+                            <p>مكتبة غنية من المحاضرات والدروس الإسلامية</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="values">
+                    <h3>قيمنا</h3>
+                    <div class="values-list">
+                        <div class="value-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>الأصالة</h4>
+                                <p>نلتزم بالمصادر الإسلامية الأصيلة والموثوقة</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>الجودة</h4>
+                                <p>نحرص على تقديم محتوى عالي الجودة ومراجع بعناية</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>الشمولية</h4>
+                                <p>نغطي مختلف جوانب الحياة الإسلامية والثقافة الدينية</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>التطوير المستمر</h4>
+                                <p>نسعى للتحسين والتطوير المستمر لخدماتنا</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team">
+                    <h3>فريق العمل</h3>
+                    <p>
+                        يضم فريق تمسيك مجموعة من المتخصصين في العلوم الشرعية والتقنية، يعملون بتفان لتقديم أفضل الخدمات للمجتمع الإسلامي.
+                    </p>
+                </div>
+
+                <div class="contact-cta">
+                    <h3>تواصل معنا</h3>
+                    <p>نحن نرحب بآرائكم واقتراحاتكم لتطوير المنصة</p>
+                    <a href="contact.html" class="btn btn-primary">اتصل بنا</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>عن تمسيك</h3>
+                    <p>منصة إسلامية شاملة تهدف إلى مساعدة الخطباء والباحثين وعامة المسلمين في الوصول إلى محتوى إسلامي موثوق.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="sermons.html">الخطب الجاهزة</a></li>
+                        <li><a href="prepare_sermon.html">إعداد خطبة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@tamsik.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 تمسيك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/simple-auth.js"></script>
+    <script src="js/auth-protection.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

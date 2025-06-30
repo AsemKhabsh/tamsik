@@ -1,0 +1,960 @@
+/* أنماط صفحة إعداد الخطبة */
+
+.prepare-sermon-container {
+    padding: 20px 0 60px;
+}
+
+.sermon-form-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.sermon-form-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-intro {
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.sermon-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sermon-section h3 {
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    position: relative;
+    padding-right: 15px;
+}
+
+.sermon-section h3::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input[type="text"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.textarea-container {
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.textarea-container:focus-within {
+    border-color: var(--primary-color);
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 120px;
+    font-family: 'Amiri', 'Scheherazade New', serif;
+}
+
+.form-group textarea:focus {
+    outline: none;
+}
+
+.textarea-actions {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.copy-btn, .ai-suggest-btn {
+    background: none;
+    border: none;
+    color: #777;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.copy-btn:hover {
+    background-color: #f0f0f0;
+    color: var(--dark-color);
+}
+
+.ai-suggest-btn {
+    color: var(--primary-color);
+}
+
+.ai-suggest-btn:hover {
+    background-color: rgba(29, 138, 78, 0.1);
+}
+
+.suggestions-container {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.suggestion-chip {
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.suggestion-chip:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.export-options {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    min-width: 200px;
+    margin-top: 5px;
+}
+
+.export-options.show {
+    display: flex;
+}
+
+.export-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.export-option:hover {
+    background-color: #f0f0f0;
+}
+
+.export-option i {
+    color: var(--primary-color);
+}
+
+/* أنماط نافذة اقتراحات الذكاء الاصطناعي */
+/* تنسيقات النافذة المنبثقة للاقتراحات */
+.ai-suggestion-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.ai-suggestion-content {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.ai-suggestion-header {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ai-suggestion-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.close-modal-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #777;
+}
+
+.ai-suggestion-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.ai-input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.ai-input-container input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.ai-loading {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.ai-results {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: none;
+}
+
+.ai-results.show {
+    display: block;
+}
+
+.ai-suggestion-footer {
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* تجاوب الصفحة مع الشاشات المختلفة */
+@media (max-width: 768px) {
+    .sermon-form-card {
+        padding: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+    .ai-suggestion-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+}
+
+/* أنماط الإشعارات */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    min-width: 300px;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notification.success {
+    border-right: 4px solid var(--primary-color);
+}
+
+.notification.success i {
+    color: var(--primary-color);
+}
+
+.notification.error {
+    border-right: 4px solid #dc3545;
+}
+
+.notification.error i {
+    color: #dc3545;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #777;
+}
+
+.notification-close:hover {
+    color: #333;
+}
+
+/* أنماط أزرار الإجراءات */
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0f7346;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* أنماط الطباعة */
+@media print {
+    header, footer, .form-actions, .textarea-actions, .suggestions-container {
+        display: none !important;
+    }
+
+    .sermon-form-card {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .sermon-section {
+        page-break-inside: avoid;
+    }
+
+    .form-group textarea, .form-group input {
+        border: none;
+    }
+
+    .textarea-container {
+        border: none;
+    }
+
+    body {
+        font-size: 12pt;
+    }
+
+    h2, h3 {
+        font-size: 14pt;
+    }
+}
+
+/* أنماط إضافية للتفاعلية */
+.highlight-field {
+    animation: highlight-pulse 1s ease;
+}
+
+@keyframes highlight-pulse {
+    0% { background-color: rgba(29, 138, 78, 0.1); }
+    100% { background-color: transparent; }
+}
+
+/* أنماط للمساعدة في الكتابة */
+.character-count {
+    font-size: 0.8rem;
+    color: #777;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.character-count.warning {
+    color: #ffc107;
+}
+
+.character-count.danger {
+    color: #dc3545;
+}
+
+/* أنماط للمقترحات السريعة */
+.quick-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.quick-suggestion-btn {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.quick-suggestion-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* أنماط لعرض المعاينة */
+.preview-container {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    display: none;
+}
+
+.preview-container.show {
+    display: block;
+}
+
+.preview-title {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.preview-section {
+    margin-bottom: 20px;
+}
+
+.preview-section-title {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+/* أنماط للمساعدة في الكتابة */
+.writing-tips {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.writing-tips h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.writing-tips ul {
+    padding-right: 20px;
+}
+
+.writing-tips li {
+    margin-bottom: 5px;
+}
+
+/* أنماط للتنقل بين الأقسام */
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.nav-btn {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.nav-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.nav-btn.disabled:hover {
+    background-color: #f8f9fa;
+    color: inherit;
+    border-color: var(--border-color);
+}
+
+/* أنماط النظام الجديد المحسن */
+.subsection {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.subsection h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.subsection h5 {
+    color: #495057;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.taqwa-subsection {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: white;
+    transition: border-color 0.3s;
+}
+
+.form-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input[type="number"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.suggest-btn {
+    background: #17a2b8;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.suggest-btn:hover {
+    background: #138496;
+}
+
+.additional-element {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+}
+
+.element-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.element-header h5 {
+    margin: 0;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.remove-element-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.remove-element-btn:hover {
+    background: #c82333;
+}
+
+.add-element-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn.btn-outline:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* أنماط نافذة الاقتراحات الجديدة */
+.suggestions-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.suggestions-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.suggestions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    background-color: #f8f9fa;
+}
+
+.suggestions-header h3 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 18px;
+}
+
+.suggestions-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.suggestions-search {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.suggestions-search input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.suggestions-search button {
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.suggestions-search button:hover {
+    background-color: #0f7346;
+}
+
+.suggestions-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.suggestion-item {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: white;
+}
+
+.suggestion-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(44, 85, 48, 0.1);
+}
+
+.suggestion-item.selected {
+    border-color: var(--primary-color);
+    background-color: #f0f8f0;
+    box-shadow: 0 2px 8px rgba(44, 85, 48, 0.2);
+}
+
+.suggestion-header {
+    margin-bottom: 10px;
+}
+
+.suggestion-header h4 {
+    margin: 0 0 5px 0;
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.suggestion-meta {
+    font-size: 12px;
+    color: #666;
+    background-color: #f8f9fa;
+    padding: 2px 8px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.suggestion-content {
+    line-height: 1.6;
+    color: #333;
+    margin: 10px 0;
+    font-family: 'Amiri', 'Scheherazade New', serif;
+}
+
+.suggestion-auth {
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+.suggestions-loading {
+    display: none;
+    text-align: center;
+    padding: 40px;
+}
+
+.suggestions-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    background-color: #f8f9fa;
+}
+
+.no-suggestions {
+    text-align: center;
+    color: #666;
+    padding: 40px;
+    font-style: italic;
+}
+
+/* تحسينات للاستجابة */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .suggestions-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .add-element-buttons {
+        flex-direction: column;
+    }
+
+    .btn.btn-outline {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .subsection {
+        padding: 15px;
+    }
+
+    .suggestions-header {
+        padding: 15px;
+    }
+
+    .suggestions-body {
+        padding: 15px;
+    }
+
+    .suggestions-footer {
+        padding: 15px;
+        flex-direction: column;
+    }
+}

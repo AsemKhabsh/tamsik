@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار API - تمسك</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            direction: rtl;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .test-section h2 {
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .btn.success {
+            background-color: #27ae60;
+        }
+        .btn.danger {
+            background-color: #e74c3c;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .result.success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .result.error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+        .status-indicator.online {
+            background-color: #27ae60;
+        }
+        .status-indicator.offline {
+            background-color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 اختبار API - منصة تمسك</h1>
+        
+        <!-- اختبار صحة الخادم -->
+        <div class="test-section">
+            <h2>🔍 اختبار صحة الخادم <span class="status-indicator" id="server-status"></span></h2>
+            <p>اختبار ما إذا كان الخادم يعمل بشكل طبيعي</p>
+            <button class="btn" onclick="testHealth()">اختبار الصحة العامة</button>
+            <div id="health-result" class="result" style="display: none;"></div>
+        </div>
+
+        <!-- اختبار قاعدة البيانات -->
+        <div class="test-section">
+            <h2>🗄️ اختبار قاعدة البيانات <span class="status-indicator" id="db-status"></span></h2>
+            <p>اختبار الاتصال بقاعدة البيانات MySQL</p>
+            <button class="btn" onclick="testDatabase()">اختبار الاتصال</button>
+            <button class="btn success" onclick="setupDatabase()">إعداد قاعدة البيانات</button>
+            <div id="db-result" class="result" style="display: none;"></div>
+        </div>
+
+        <!-- اختبار المصادقة -->
+        <div class="test-section">
+            <h2>🔐 اختبار المصادقة</h2>
+            <p>اختبار تسجيل الدخول بالبيانات الافتراضية</p>
+            <div class="input-group">
+                <label>البريد الإلكتروني:</label>
+                <input type="email" id="email" value="admin@tamsik.com">
+            </div>
+            <div class="input-group">
+                <label>كلمة المرور:</label>
+                <input type="password" id="password" value="admin123">
+            </div>
+            <button class="btn" onclick="testAuth()">اختبار تسجيل الدخول</button>
+            <div id="auth-result" class="result" style="display: none;"></div>
+        </div>
+
+        <!-- معلومات النظام -->
+        <div class="test-section">
+            <h2>ℹ️ معلومات النظام</h2>
+            <p><strong>عنوان الخادم:</strong> http://localhost:3000</p>
+            <p><strong>بيئة التطوير:</strong> Development</p>
+            <p><strong>قاعدة البيانات:</strong> MySQL</p>
+            <p><strong>المنفذ:</strong> 3000</p>
+        </div>
+    </div>
+
+    <script>
+        // دالة لعرض النتائج
+        function showResult(elementId, data, isSuccess = true) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = `result ${isSuccess ? 'success' : 'error'}`;
+            element.textContent = JSON.stringify(data, null, 2);
+        }
+
+        // دالة لتحديث حالة المؤشر
+        function updateStatus(elementId, isOnline) {
+            const element = document.getElementById(elementId);
+            element.className = `status-indicator ${isOnline ? 'online' : 'offline'}`;
+        }
+
+        // اختبار صحة الخادم
+        async function testHealth() {
+            try {
+                const response = await fetch('/api/health');
+                const data = await response.json();
+                showResult('health-result', data, response.ok);
+                updateStatus('server-status', response.ok);
+            } catch (error) {
+                showResult('health-result', { error: error.message }, false);
+                updateStatus('server-status', false);
+            }
+        }
+
+        // اختبار قاعدة البيانات
+        async function testDatabase() {
+            try {
+                const response = await fetch('/api/test-db');
+                const data = await response.json();
+                showResult('db-result', data, response.ok);
+                updateStatus('db-status', response.ok && data.database === 'متصل');
+            } catch (error) {
+                showResult('db-result', { error: error.message }, false);
+                updateStatus('db-status', false);
+            }
+        }
+
+        // إعداد قاعدة البيانات
+        async function setupDatabase() {
+            try {
+                const response = await fetch('/api/setup-db', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                showResult('db-result', data, response.ok);
+                
+                // إعادة اختبار الاتصال بعد الإعداد
+                if (response.ok) {
+                    setTimeout(testDatabase, 1000);
+                }
+            } catch (error) {
+                showResult('db-result', { error: error.message }, false);
+            }
+        }
+
+        // اختبار المصادقة
+        async function testAuth() {
+            try {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                const response = await fetch('/api/test-auth', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                showResult('auth-result', data, response.ok);
+            } catch (error) {
+                showResult('auth-result', { error: error.message }, false);
+            }
+        }
+
+        // تشغيل الاختبارات التلقائية عند تحميل الصفحة
+        window.onload = function() {
+            testHealth();
+            setTimeout(testDatabase, 500);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمسيك - تفاصيل المقال</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/article-details.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">تمسيك</a>
+                <p class="slogan">"والذين يمسكون بالكتاب..."</p>
+                <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="sermons.html"><i class="fas fa-book-open"></i> الخطب الجاهزة</a></li>
+                    <li><a href="prepare_sermon.html"><i class="fas fa-pen"></i> إعداد خطبة</a></li>
+                    <li><a href="scholars.html"><i class="fas fa-user-graduate"></i> العلماء اليمنيين</a></li>
+                    <li><a href="thinkers.html"><i class="fas fa-lightbulb"></i> المفكرون والدعاة</a></li>
+                    <li><a href="lectures.html"><i class="fas fa-microphone"></i> المحاضرات والدروس</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</a></li>
+                    <li><a href="register.html"><i class="fas fa-user-plus"></i> إنشاء حساب</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container page-content">
+        <!-- شريط التنقل -->
+        <nav class="breadcrumb">
+            <a href="index.html">الرئيسية</a>
+            <i class="fas fa-chevron-left"></i>
+            <a href="thinkers.html">المفكرون والدعاة</a>
+            <i class="fas fa-chevron-left"></i>
+            <span id="article-breadcrumb">تفاصيل المقال</span>
+        </nav>
+
+        <!-- محتوى المقال -->
+        <article class="article-container" id="article-container">
+            <!-- سيتم ملء محتوى المقال هنا بواسطة JavaScript -->
+        </article>
+
+        <!-- قسم التعليقات -->
+        <section class="comments-section">
+            <div class="comments-header">
+                <h3><i class="fas fa-comments"></i> التعليقات (<span id="comments-count">0</span>)</h3>
+            </div>
+
+            <!-- نموذج إضافة تعليق -->
+            <div class="add-comment-section" id="add-comment-section" style="display: none;">
+                <h4>إضافة تعليق</h4>
+                <form id="comment-form">
+                    <div class="form-group">
+                        <textarea id="comment-text" placeholder="اكتب تعليقك هنا..." rows="4" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">نشر التعليق</button>
+                        <button type="button" class="btn btn-secondary" id="cancel-comment">إلغاء</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- رسالة تسجيل الدخول -->
+            <div class="login-message" id="login-message">
+                <p><i class="fas fa-info-circle"></i> يجب <a href="login.html">تسجيل الدخول</a> لإضافة تعليق</p>
+            </div>
+
+            <!-- قائمة التعليقات -->
+            <div class="comments-list" id="comments-list">
+                <!-- سيتم ملء التعليقات هنا بواسطة JavaScript -->
+            </div>
+
+            <!-- رسالة عدم وجود تعليقات -->
+            <div class="no-comments" id="no-comments" style="display: none;">
+                <i class="fas fa-comment-slash"></i>
+                <p>لا توجد تعليقات حتى الآن. كن أول من يعلق!</p>
+            </div>
+        </section>
+
+        <!-- مقالات ذات صلة -->
+        <section class="related-articles">
+            <h3><i class="fas fa-newspaper"></i> مقالات ذات صلة</h3>
+            <div class="related-grid" id="related-grid">
+                <!-- سيتم ملء المقالات ذات الصلة هنا -->
+            </div>
+        </section>
+    </main>
+
+    <!-- نافذة مشاركة المقال -->
+    <div class="modal" id="share-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>مشاركة المقال</h3>
+                <button class="close-modal" id="close-share-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="share-options">
+                    <button class="share-btn facebook" onclick="shareOnFacebook()">
+                        <i class="fab fa-facebook"></i>
+                        فيسبوك
+                    </button>
+                    <button class="share-btn twitter" onclick="shareOnTwitter()">
+                        <i class="fab fa-twitter"></i>
+                        تويتر
+                    </button>
+                    <button class="share-btn whatsapp" onclick="shareOnWhatsApp()">
+                        <i class="fab fa-whatsapp"></i>
+                        واتساب
+                    </button>
+                    <button class="share-btn telegram" onclick="shareOnTelegram()">
+                        <i class="fab fa-telegram"></i>
+                        تيليجرام
+                    </button>
+                </div>
+                <div class="copy-link">
+                    <input type="text" id="article-url" readonly>
+                    <button class="btn btn-primary" onclick="copyLink()">نسخ الرابط</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>عن تمسيك</h3>
+                    <p>منصة إسلامية شاملة تهدف إلى مساعدة الخطباء والباحثين وعامة المسلمين في الوصول إلى محتوى إسلامي موثوق.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="sermons.html">الخطب الجاهزة</a></li>
+                        <li><a href="prepare_sermon.html">إعداد خطبة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@tamsik.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 تمسيك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/article-details.js"></script>
+</body>
+</html>

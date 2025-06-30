@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمسيك - تفاصيل الخطبة</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/sermon-details.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- إضافة الخطوط العربية قبل إغلاق وسم head -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">تمسيك</a>
+                <p class="slogan">"والذين يمسكون بالكتاب..."</p>
+                <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="sermons.html"><i class="fas fa-book-open"></i> الخطب الجاهزة</a></li>
+                    <li><a href="prepare_sermon.html"><i class="fas fa-pen"></i> إعداد خطبة</a></li>
+                    <li><a href="scholars.html"><i class="fas fa-user-graduate"></i> العلماء</a></li>
+                    <li><a href="thinkers.html"><i class="fas fa-lightbulb"></i> المفكرون والدعاة</a></li>
+                    <li><a href="lectures.html"><i class="fas fa-microphone"></i> المحاضرات والدروس</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1 class="sermon-title">عنوان الخطبة</h1>
+            <p><a href="sermons.html"><i class="fas fa-arrow-right"></i> العودة إلى الخطب الجاهزة</a></p>
+        </div>
+    </div>
+
+    <main class="container page-content">
+        <div class="sermon-details-container">
+            <div class="sermon-details-card">
+                <div class="sermon-header">
+                    <div class="sermon-info">
+                        <!-- معلومات الخطبة ستضاف هنا بواسطة JavaScript -->
+                    </div>
+                    <!-- في قسم sermon-actions، استبدل زر التحميل الحالي بهذا -->
+                    <div class="sermon-actions">
+                        <div class="download-options">
+                            <button class="btn btn-primary download-btn">
+                                <i class="fas fa-download"></i> تحميل الخطبة
+                            </button>
+                            <div class="download-menu">
+                                <!-- إزالة خيار تحميل PDF -->
+                                <div class="download-menu-item" id="download-docx">
+                                    <i class="fas fa-file-word"></i> تحميل كملف Word
+                                </div>
+                                <div class="download-menu-item" id="print-sermon">
+                                    <i class="fas fa-print"></i> طباعة الخطبة
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline share-btn"><i class="fas fa-share-alt"></i> مشاركة</button>
+                    </div>
+                </div>
+                
+                <div class="sermon-body">
+                    <div class="sermon-content">
+                        <!-- محتوى الخطبة سيضاف هنا بواسطة JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="sermon-footer">
+                    <div class="sermon-references">
+                        <h3>المراجع</h3>
+                        <ul class="references-list">
+                            <!-- المراجع ستضاف هنا بواسطة JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <div class="sermon-tags-section">
+                        <h3>الكلمات المفتاحية</h3>
+                        <div class="sermon-tags">
+                            <!-- الكلمات المفتاحية ستضاف هنا بواسطة JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="related-sermons">
+                <h2 class="section-title">خطب ذات صلة</h2>
+                <div class="sermons-grid">
+                    <!-- الخطب ذات الصلة ستضاف هنا بواسطة JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>عن تمسيك</h3>
+                    <p>منصة إسلامية شاملة تهدف إلى مساعدة الخطباء والباحثين وعامة المسلمين في الوصول إلى محتوى إسلامي موثوق.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="sermons.html">الخطب الجاهزة</a></li>
+                        <li><a href="prepare_sermon.html">إعداد خطبة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@tamsik.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 تمسيك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- إضافة المكتبات المطلوبة قبل إغلاق وسم body -->
+    <!-- Add this before the other script tags -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.5/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/sermon-details.js"></script>
+</body>
+</html>

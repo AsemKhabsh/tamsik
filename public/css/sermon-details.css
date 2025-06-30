@@ -1,0 +1,268 @@
+/* أنماط صفحة تفاصيل الخطبة */
+.sermon-details-container {
+    padding: 20px 0 60px;
+}
+
+.sermon-details-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.sermon-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sermon-info {
+    flex: 1;
+}
+
+.sermon-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.sermon-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--dark-color);
+}
+
+.sermon-stats {
+    display: flex;
+    gap: 20px;
+    color: #777;
+}
+
+/* تحسين أنماط زر التحميل مع الخيارات */
+.download-options {
+    position: relative;
+    display: inline-block;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #156a3c;
+}
+
+.download-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--light-color);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    z-index: 10;
+    display: none;
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.download-options:hover .download-menu {
+    display: block;
+}
+
+.download-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    color: var(--text-color);
+    transition: all 0.3s;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.download-menu-item:last-child {
+    border-bottom: none;
+}
+
+.download-menu-item:hover {
+    background-color: var(--bg-light);
+    color: var(--primary-color);
+}
+
+.download-menu-item i {
+    width: 20px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+/* تحسين أنماط قائمة المشاركة */
+.share-options {
+    position: relative;
+    display: inline-block;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #f8f9fa;
+    color: var(--dark-color);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.share-btn:hover {
+    background-color: #e9ecef;
+}
+
+.share-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--light-color);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    z-index: 10;
+    display: none;
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    animation: fadeIn 0.3s ease;
+}
+
+.share-menu.show {
+    display: block;
+}
+
+.share-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    color: var(--text-color);
+    transition: all 0.3s;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.share-menu-item:last-child {
+    border-bottom: none;
+}
+
+.share-menu-item:hover {
+    background-color: var(--bg-light);
+    color: var(--primary-color);
+}
+
+.share-menu-item i {
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.share-menu-item i.fa-whatsapp {
+    color: #25D366;
+}
+
+.share-menu-item i.fa-twitter {
+    color: #1DA1F2;
+}
+
+.share-menu-item i.fa-facebook {
+    color: #4267B2;
+}
+
+.share-menu-item i.fa-envelope {
+    color: #D44638;
+}
+
+.share-menu-item i.fa-link {
+    color: var(--primary-color);
+}
+
+/* تحسين تنسيق أزرار الإجراءات */
+.sermon-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* تجاوب قائمة المشاركة والتحميل */
+@media (max-width: 768px) {
+    .sermon-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .download-options, .share-options {
+        width: 100%;
+    }
+    
+    .download-btn, .share-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .download-menu, .share-menu {
+        width: 100%;
+    }
+}
+
+.sermon-body {
+    margin-bottom: 30px;
+}
+
+.sermon-content {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.sermon-content p {
+    margin-bottom: 20px;
+}
+
+.sermon-footer {
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Style for the delete button */
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    margin-left: 10px;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}

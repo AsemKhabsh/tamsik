@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمسيك - إعداد خطبة</title>
+    <link rel="stylesheet" href="css/prepare-sermon.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/auth-protection.css">
+
+    <!-- الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- إضافة مكتبات تصدير الملفات -->
+    <script src="https://unpkg.com/docx@7.1.0/build/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">تمسيك</a>
+                <p class="slogan">"والذين يمسكون بالكتاب..."</p>
+                <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="sermons.html"><i class="fas fa-book-open"></i> الخطب الجاهزة</a></li>
+                    <li><a href="prepare_sermon.html" class="active"><i class="fas fa-pen"></i> إعداد خطبة</a></li>
+                    <li><a href="scholars.html"><i class="fas fa-user-graduate"></i> العلماء اليمنيين</a></li>
+                    <li><a href="thinkers.html"><i class="fas fa-lightbulb"></i> المفكرون والدعاة</a></li>
+                    <li><a href="lectures.html"><i class="fas fa-microphone"></i> المحاضرات والدروس</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>إعداد خطبة</h1>
+            <p>أداة مساعدة لتنظيم وإعداد خطبتك بطريقة احترافية</p>
+        </div>
+    </div>
+
+    <main class="container page-content">
+        <div class="prepare-sermon-container">
+            <div class="sermon-form-card">
+                <h2><i class="fas fa-pen-fancy"></i> إعداد خطبة جديدة</h2>
+                <p class="form-intro">استخدم النموذج التالي لإعداد خطبتك بشكل منظم وفقاً للبنية الإسلامية التقليدية. سيتم حفظ ما تكتبه تلقائياً وعرض اقتراحات من المستخدمين السابقين.</p>
+
+                <!-- مؤشر التقدم -->
+                <div class="progress-indicator">
+                    <div class="progress-step active" data-step="1">
+                        <i class="fas fa-heading"></i>
+                        <div>العنوان</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <i class="fas fa-book-open"></i>
+                        <div>المقدمة</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <i class="fas fa-file-alt"></i>
+                        <div>المحتوى</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <i class="fas fa-hands"></i>
+                        <div>الخاتمة</div>
+                    </div>
+                </div>
+
+                <form id="prepare-sermon-form">
+                    <!-- 1. العنوان الرئيسي للخطبة -->
+                    <div class="sermon-section" data-section="1">
+                        <h3><i class="fas fa-heading"></i> العنوان الرئيسي للخطبة</h3>
+                        <div class="form-group required">
+                            <label for="main-title">العنوان الرئيسي</label>
+                            <input type="text" id="main-title" name="main-title" placeholder="أدخل العنوان الرئيسي للخطبة" required>
+                            <button type="button" class="suggest-btn" data-target="main-title" data-type="title">
+                                <i class="fas fa-lightbulb"></i> اقتراحات
+                            </button>
+                        </div>
+
+                        <!-- معلومات إضافية -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sermon-date">تاريخ الخطبة</label>
+                                <input type="date" id="sermon-date" name="sermon-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="sermon-occasion">المناسبة</label>
+                                <select id="sermon-occasion" name="sermon-occasion">
+                                    <option value="">اختر المناسبة</option>
+                                    <option value="جمعة عادية">جمعة عادية</option>
+                                    <option value="رمضان">رمضان</option>
+                                    <option value="عيد الفطر">عيد الفطر</option>
+                                    <option value="عيد الأضحى">عيد الأضحى</option>
+                                    <option value="الحج">الحج</option>
+                                    <option value="العشر من ذي الحجة">العشر من ذي الحجة</option>
+                                    <option value="أخرى">أخرى</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. المقدمة -->
+                    <div class="sermon-section">
+                        <h3><i class="fas fa-book-open"></i> المقدمة</h3>
+
+                        <!-- الأثر -->
+                        <div class="form-group">
+                            <label for="introduction-athar">الأثر (آية قرآنية أو حديث أو قول لصحابي أو تابعي)</label>
+                            <div class="textarea-container">
+                                <textarea id="introduction-athar" name="introduction-athar" rows="3" placeholder="أدخل الأثر المناسب للموضوع..."></textarea>
+                                <div class="textarea-actions">
+                                    <button type="button" class="suggest-btn" data-target="introduction-athar" data-type="athar">
+                                        <i class="fas fa-lightbulb"></i> اقتراحات
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- السجع -->
+                        <div class="subsection">
+                            <h4><i class="fas fa-feather-alt"></i> السجع</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="saja-topic">الموضوع</label>
+                                    <input type="text" id="saja-topic" name="saja-topic" placeholder="موضوع السجع">
+                                </div>
+                                <div class="form-group">
+                                    <label for="saja-rhyme">القافية</label>
+                                    <input type="text" id="saja-rhyme" name="saja-rhyme" placeholder="القافية">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="saja-attribution">النسبة (أول شيخ كتبها)</label>
+                                    <input type="text" id="saja-attribution" name="saja-attribution" placeholder="اسم الشيخ">
+                                </div>
+                                <div class="form-group">
+                                    <label for="saja-reference">المرجع</label>
+                                    <input type="text" id="saja-reference" name="saja-reference" placeholder="المرجع">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="saja-text">نص السجع</label>
+                                <div class="textarea-container">
+                                    <textarea id="saja-text" name="saja-text" rows="3" placeholder="أدخل نص السجع..."></textarea>
+                                    <div class="textarea-actions">
+                                        <button type="button" class="suggest-btn" data-target="saja-text" data-type="saja">
+                                            <i class="fas fa-lightbulb"></i> اقتراحات
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- الشعر -->
+                        <div class="subsection">
+                            <h4><i class="fas fa-scroll"></i> الشعر</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="poetry-topic">الموضوع</label>
+                                    <input type="text" id="poetry-topic" name="poetry-topic" placeholder="موضوع الشعر">
+                                </div>
+                                <div class="form-group">
+                                    <label for="poetry-rhyme">القافية</label>
+                                    <input type="text" id="poetry-rhyme" name="poetry-rhyme" placeholder="القافية">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="poetry-meter">البحر</label>
+                                    <input type="text" id="poetry-meter" name="poetry-meter" placeholder="البحر الشعري">
+                                </div>
+                                <div class="form-group">
+                                    <label for="poetry-poet">النسبة (الشاعر)</label>
+                                    <input type="text" id="poetry-poet" name="poetry-poet" placeholder="اسم الشاعر">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="poetry-reference">المرجع</label>
+                                <input type="text" id="poetry-reference" name="poetry-reference" placeholder="المرجع">
+                            </div>
+                            <div class="form-group">
+                                <label for="poetry-text">نص الشعر</label>
+                                <div class="textarea-container">
+                                    <textarea id="poetry-text" name="poetry-text" rows="4" placeholder="أدخل الأبيات الشعرية..."></textarea>
+                                    <div class="textarea-actions">
+                                        <button type="button" class="suggest-btn" data-target="poetry-text" data-type="poetry">
+                                            <i class="fas fa-lightbulb"></i> اقتراحات
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. أما بعد -->
+                    <div class="sermon-section">
+                        <h3><i class="fas fa-praying-hands"></i> أما بعد</h3>
+
+                        <!-- الوصية بالتقوى -->
+                        <div class="subsection">
+                            <h4><i class="fas fa-heart"></i> الوصية بالتقوى</h4>
+
+                            <!-- آيات قرآنية -->
+                            <div class="taqwa-subsection">
+                                <h5>آيات قرآنية</h5>
+                                <div class="form-group">
+                                    <label for="taqwa-verses-informative">آيات الإخبار</label>
+                                    <div class="textarea-container">
+                                        <textarea id="taqwa-verses-informative" name="taqwa-verses-informative" rows="3" placeholder="آيات قرآنية تتحدث عن التقوى بصيغة الإخبار..."></textarea>
+                                        <div class="textarea-actions">
+                                            <button type="button" class="suggest-btn" data-target="taqwa-verses-informative" data-type="verses" data-context="إخبار">
+                                                <i class="fas fa-lightbulb"></i> اقتراحات
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="taqwa-verses-command">آيات الأمر</label>
+                                    <div class="textarea-container">
+                                        <textarea id="taqwa-verses-command" name="taqwa-verses-command" rows="3" placeholder="آيات قرآنية تأمر بالتقوى..."></textarea>
+                                        <div class="textarea-actions">
+                                            <button type="button" class="suggest-btn" data-target="taqwa-verses-command" data-type="verses" data-context="أمر">
+                                                <i class="fas fa-lightbulb"></i> اقتراحات
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="taqwa-verses-promise">آيات الوعد</label>
+                                    <div class="textarea-container">
+                                        <textarea id="taqwa-verses-promise" name="taqwa-verses-promise" rows="3" placeholder="آيات قرآنية تتضمن وعد الله للمتقين..."></textarea>
+                                        <div class="textarea-actions">
+                                            <button type="button" class="suggest-btn" data-target="taqwa-verses-promise" data-type="verses" data-context="وعد">
+                                                <i class="fas fa-lightbulb"></i> اقتراحات
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- أحاديث التقوى -->
+                            <div class="taqwa-subsection">
+                                <h5>أحاديث التقوى</h5>
+                                <div class="form-group">
+                                    <label for="taqwa-hadith-informative">أحاديث الإخبار</label>
+                                    <div class="textarea-container">
+                                        <textarea id="taqwa-hadith-informative" name="taqwa-hadith-informative" rows="3" placeholder="أحاديث تتحدث عن التقوى بصيغة الإخبار..."></textarea>
+                                        <div class="textarea-actions">
+                                            <button type="button" class="suggest-btn" data-target="taqwa-hadith-informative" data-type="hadith" data-context="إخبار">
+                                                <i class="fas fa-lightbulb"></i> اقتراحات
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="taqwa-hadith-command">أحاديث الأمر</label>
+                                    <div class="textarea-container">
+                                        <textarea id="taqwa-hadith-command" name="taqwa-hadith-command" rows="3" placeholder="أحاديث تأمر بالتقوى..."></textarea>
+                                        <div class="textarea-actions">
+                                            <button type="button" class="suggest-btn" data-target="taqwa-hadith-command" data-type="hadith" data-context="أمر">
+                                                <i class="fas fa-lightbulb"></i> اقتراحات
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="taqwa-hadith-promise">أحاديث الوعد</label>
+                                    <div class="textarea-container">
+                                        <textarea id="taqwa-hadith-promise" name="taqwa-hadith-promise" rows="3" placeholder="أحاديث تتضمن وعد النبي للمتقين..."></textarea>
+                                        <div class="textarea-actions">
+                                            <button type="button" class="suggest-btn" data-target="taqwa-hadith-promise" data-type="hadith" data-context="وعد">
+                                                <i class="fas fa-lightbulb"></i> اقتراحات
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- آثار في التقوى -->
+                            <div class="taqwa-subsection">
+                                <h5>آثار في التقوى</h5>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="taqwa-athar-speaker">القائل</label>
+                                        <input type="text" id="taqwa-athar-speaker" name="taqwa-athar-speaker" placeholder="اسم القائل">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="taqwa-athar-type">نوع الأثر</label>
+                                        <select id="taqwa-athar-type" name="taqwa-athar-type">
+                                            <option value="إخبار">إخبار</option>
+                                            <option value="قصة">قصة</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="taqwa-athar-text">نص الأثر</label>
+                                    <div class="textarea-container">
+                                        <textarea id="taqwa-athar-text" name="taqwa-athar-text" rows="4" placeholder="أدخل نص الأثر..."></textarea>
+                                        <div class="textarea-actions">
+                                            <button type="button" class="suggest-btn" data-target="taqwa-athar-text" data-type="athar">
+                                                <i class="fas fa-lightbulb"></i> اقتراحات
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. نص الخطبة -->
+                    <div class="sermon-section">
+                        <h3><i class="fas fa-file-alt"></i> نص الخطبة</h3>
+                        <div class="form-group">
+                            <label for="sermon-text">المحتوى الرئيسي للخطبة</label>
+                            <div class="textarea-container">
+                                <textarea id="sermon-text" name="sermon-text" rows="15" placeholder="أدخل المحتوى الرئيسي للخطبة..."></textarea>
+                                <div class="textarea-actions">
+                                    <button type="button" class="suggest-btn" data-target="sermon-text" data-type="content">
+                                        <i class="fas fa-lightbulb"></i> اقتراحات
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. خاتمة الخطبة الأولى -->
+                    <div class="sermon-section">
+                        <h3><i class="fas fa-flag-checkered"></i> خاتمة الخطبة الأولى</h3>
+                        <div class="form-group">
+                            <label for="first-sermon-conclusion">نص الخاتمة</label>
+                            <div class="textarea-container">
+                                <textarea id="first-sermon-conclusion" name="first-sermon-conclusion" rows="5" placeholder="أدخل خاتمة الخطبة الأولى..."></textarea>
+                                <div class="textarea-actions">
+                                    <button type="button" class="suggest-btn" data-target="first-sermon-conclusion" data-type="conclusion">
+                                        <i class="fas fa-lightbulb"></i> اقتراحات
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. الخطبة الثانية -->
+                    <div class="sermon-section">
+                        <h3><i class="fas fa-microphone"></i> الخطبة الثانية</h3>
+                        <div class="form-group">
+                            <label for="second-sermon">محتوى الخطبة الثانية</label>
+                            <div class="textarea-container">
+                                <textarea id="second-sermon" name="second-sermon" rows="10" placeholder="أدخل محتوى الخطبة الثانية..."></textarea>
+                                <div class="textarea-actions">
+                                    <button type="button" class="suggest-btn" data-target="second-sermon" data-type="content">
+                                        <i class="fas fa-lightbulb"></i> اقتراحات
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. خاتمة الخطبة الثانية -->
+                    <div class="sermon-section">
+                        <h3><i class="fas fa-hands"></i> خاتمة الخطبة الثانية</h3>
+
+                        <!-- الصلاة على النبي -->
+                        <div class="form-group">
+                            <label for="salah-on-prophet">الصلاة على النبي صلى الله عليه وسلم</label>
+                            <div class="textarea-container">
+                                <textarea id="salah-on-prophet" name="salah-on-prophet" rows="3" placeholder="اللهم صل وسلم على نبينا محمد..."></textarea>
+                                <div class="textarea-actions">
+                                    <button type="button" class="suggest-btn" data-target="salah-on-prophet" data-type="salah">
+                                        <i class="fas fa-lightbulb"></i> اقتراحات
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- الدعاء -->
+                        <div class="subsection">
+                            <h4><i class="fas fa-praying-hands"></i> الدعاء</h4>
+
+                            <div class="form-group">
+                                <label for="dua-praise">الثناء</label>
+                                <div class="textarea-container">
+                                    <textarea id="dua-praise" name="dua-praise" rows="3" placeholder="الحمد لله رب العالمين..."></textarea>
+                                    <div class="textarea-actions">
+                                        <button type="button" class="suggest-btn" data-target="dua-praise" data-type="dua" data-dua-type="ثناء">
+                                            <i class="fas fa-lightbulb"></i> اقتراحات
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dua-quranic">دعاء قرآني</label>
+                                <div class="textarea-container">
+                                    <textarea id="dua-quranic" name="dua-quranic" rows="3" placeholder="ربنا آتنا في الدنيا حسنة..."></textarea>
+                                    <div class="textarea-actions">
+                                        <button type="button" class="suggest-btn" data-target="dua-quranic" data-type="dua" data-dua-type="دعاء قرآني">
+                                            <i class="fas fa-lightbulb"></i> اقتراحات
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dua-prophetic">دعاء نبوي</label>
+                                <div class="textarea-container">
+                                    <textarea id="dua-prophetic" name="dua-prophetic" rows="3" placeholder="اللهم أصلح لي ديني..."></textarea>
+                                    <div class="textarea-actions">
+                                        <button type="button" class="suggest-btn" data-target="dua-prophetic" data-type="dua" data-dua-type="دعاء نبوي">
+                                            <i class="fas fa-lightbulb"></i> اقتراحات
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dua-muslim">دعاء للإسلام والمسلمين</label>
+                                <div class="textarea-container">
+                                    <textarea id="dua-muslim" name="dua-muslim" rows="3" placeholder="اللهم أعز الإسلام والمسلمين..."></textarea>
+                                    <div class="textarea-actions">
+                                        <button type="button" class="suggest-btn" data-target="dua-muslim" data-type="dua" data-dua-type="دعاء للإسلام والمسلمين">
+                                            <i class="fas fa-lightbulb"></i> اقتراحات
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dua-oppressor">دعاء لردع الظالمين</label>
+                                <div class="textarea-container">
+                                    <textarea id="dua-oppressor" name="dua-oppressor" rows="3" placeholder="اللهم أهلك الظالمين بالظالمين..."></textarea>
+                                    <div class="textarea-actions">
+                                        <button type="button" class="suggest-btn" data-target="dua-oppressor" data-type="dua" data-dua-type="دعاء لردع الظالمين">
+                                            <i class="fas fa-lightbulb"></i> اقتراحات
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dua-additional">دعاء إضافي</label>
+                                <div class="textarea-container">
+                                    <textarea id="dua-additional" name="dua-additional" rows="3" placeholder="دعاء إضافي حسب المناسبة..."></textarea>
+                                    <div class="textarea-actions">
+                                        <button type="button" class="suggest-btn" data-target="dua-additional" data-type="dua" data-dua-type="دعاء إضافي">
+                                            <i class="fas fa-lightbulb"></i> اقتراحات
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dua-istisqa">استسقاء</label>
+                                <div class="textarea-container">
+                                    <textarea id="dua-istisqa" name="dua-istisqa" rows="3" placeholder="اللهم أغثنا، اللهم أغثنا..."></textarea>
+                                    <div class="textarea-actions">
+                                        <button type="button" class="suggest-btn" data-target="dua-istisqa" data-type="dua" data-dua-type="استسقاء">
+                                            <i class="fas fa-lightbulb"></i> اقتراحات
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- عناصر إضافية للخاتمة -->
+                        <div class="subsection">
+                            <h4><i class="fas fa-plus-circle"></i> عناصر إضافية للخاتمة</h4>
+                            <div class="additional-elements-container" id="additional-elements">
+                                <!-- سيتم إضافة العناصر الإضافية هنا ديناميكياً -->
+                            </div>
+                            <div class="add-element-buttons">
+                                <button type="button" class="btn btn-outline" onclick="addAdditionalElement('verse')">
+                                    <i class="fas fa-plus"></i> إضافة آية
+                                </button>
+                                <button type="button" class="btn btn-outline" onclick="addAdditionalElement('hadith')">
+                                    <i class="fas fa-plus"></i> إضافة حديث
+                                </button>
+                                <button type="button" class="btn btn-outline" onclick="addAdditionalElement('poetry')">
+                                    <i class="fas fa-plus"></i> إضافة شعر
+                                </button>
+                                <button type="button" class="btn btn-outline" onclick="addAdditionalElement('athar')">
+                                    <i class="fas fa-plus"></i> إضافة قول أو أثر
+                                </button>
+                                <button type="button" class="btn btn-outline" onclick="addAdditionalElement('story')">
+                                    <i class="fas fa-plus"></i> إضافة قصة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- معلومات الخطيب -->
+                    <div class="sermon-section">
+                        <h3><i class="fas fa-user"></i> معلومات الخطيب</h3>
+                        <div class="form-group">
+                            <label for="preacher-name">اسم الخطيب</label>
+                            <input type="text" id="preacher-name" name="preacher-name" placeholder="أدخل اسم الخطيب">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <!-- أزرار التراجع والإعادة -->
+                        <div class="undo-redo-group">
+                            <button type="button" class="btn btn-secondary" id="undo-btn" title="تراجع (Ctrl+Z)">
+                                <i class="fas fa-undo"></i> تراجع
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="redo-btn" title="إعادة (Ctrl+Y)">
+                                <i class="fas fa-redo"></i> إعادة
+                            </button>
+                        </div>
+
+                        <button type="button" id="save-draft-btn" class="btn btn-secondary" title="حفظ (Ctrl+S)">
+                            <i class="fas fa-save"></i> حفظ كمسودة
+                        </button>
+
+                        <button type="button" class="btn btn-primary" id="preview-btn">
+                            <i class="fas fa-eye"></i> معاينة
+                        </button>
+
+                        <div class="export-btn-container" style="position: relative;">
+                            <button type="button" class="btn btn-primary" id="export-btn">
+                                <i class="fas fa-file-export"></i> تصدير
+                            </button>
+                            <div class="export-options">
+                                <div class="export-option" id="export-word">
+                                    <i class="fas fa-file-word"></i>
+                                    <span>تصدير إلى Word</span>
+                                </div>
+                                <div class="export-option" id="print-sermon">
+                                    <i class="fas fa-print"></i>
+                                    <span>طباعة</span>
+                                </div>
+                                <div class="export-option" id="export-pdf">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>تصدير إلى PDF</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-secondary" id="clear-btn">
+                            <i class="fas fa-trash"></i> مسح
+                        </button>
+
+                        <!-- إحصائيات سريعة -->
+                        <div class="sermon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">إجمالي الكلمات:</span>
+                                <span class="stat-value" id="total-words">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">نسبة الإكمال:</span>
+                                <span class="stat-value" id="completion-percentage">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- نافذة الاقتراحات -->
+            <div class="suggestions-modal" id="suggestions-modal">
+                <div class="suggestions-content">
+                    <div class="suggestions-header">
+                        <h3>اقتراحات من المستخدمين السابقين</h3>
+                        <button type="button" class="close-modal-btn" onclick="closeSuggestionsModal()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="suggestions-body">
+                        <div class="suggestions-search">
+                            <input type="text" id="suggestions-search" placeholder="ابحث في الاقتراحات...">
+                            <button type="button" onclick="searchSuggestions()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="suggestions-list" id="suggestions-list">
+                            <!-- سيتم تحميل الاقتراحات هنا -->
+                        </div>
+                        <div class="suggestions-loading" id="suggestions-loading" style="display: none;">
+                            <div class="spinner"></div>
+                            <p>جاري تحميل الاقتراحات...</p>
+                        </div>
+                    </div>
+                    <div class="suggestions-footer">
+                        <button type="button" id="use-suggestion-btn" class="btn btn-primary" onclick="useSuggestion()">
+                            استخدام هذا الاقتراح
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="closeSuggestionsModal()">
+                            إلغاء
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>عن تمسيك</h3>
+                    <p>منصة تمسيك هي منصة إسلامية تهدف إلى مساعدة الخطباء والدعاة في إعداد وتنظيم خطبهم ودروسهم بطريقة احترافية.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="sermons.html">الخطب الجاهزة</a></li>
+                        <li><a href="prepare_sermon.html">إعداد خطبة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@tamsik.com</p>
+                    <p><i class="fas fa-phone"></i> +966 123 456 789</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 تمسيك - جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- نظام الحماية -->
+    <script src="js/auth.js"></script>
+    <script src="js/simple-auth.js"></script>
+    <script src="js/auth-protection.js"></script>
+
+    <!-- إضافة ملف JavaScript الخاص بالصفحة -->
+    <script src="js/prepare-sermon.js"></script>
+</body>
+</html>

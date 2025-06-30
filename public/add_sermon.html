@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمسيك - إضافة خطبة جديدة</title>
+    <!-- إزالة الإشارة المزدوجة إلى ملف style.css -->
+    <link rel="stylesheet" href="css/add-sermon.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/sermons.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    
+    <!-- الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">تمسيك</a>
+                <p class="slogan">"والذين يمسكون بالكتاب..."</p>
+                <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="sermons.html"><i class="fas fa-book-open"></i> الخطب الجاهزة</a></li>
+                    <li><a href="prepare_sermon.html"><i class="fas fa-pen"></i> إعداد خطبة</a></li>
+                    <li><a href="scholars.html"><i class="fas fa-user-graduate"></i> العلماء</a></li>
+                    <li><a href="thinkers.html"><i class="fas fa-lightbulb"></i> المفكرون والدعاة</a></li>
+                    <li><a href="lectures.html"><i class="fas fa-microphone"></i> المحاضرات والدروس</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>إضافة خطبة جديدة</h1>
+            <p>شارك خطبتك مع إخوانك الخطباء وطلاب العلم</p>
+        </div>
+    </div>
+
+    <main class="container page-content">
+        <div class="add-sermon-form-container">
+            <div class="form-card">
+                <h2><i class="fas fa-plus-circle"></i> إضافة خطبة جديدة</h2>
+                <p class="form-intro">يرجى ملء النموذج التالي لإضافة خطبة جديدة. الحقول المميزة بعلامة (*) إلزامية.</p>
+                
+                <form id="add-sermon-form">
+                    <div class="form-group">
+                        <label for="sermon-title">عنوان الخطبة *</label>
+                        <input type="text" id="sermon-title" name="sermon-title" placeholder="أدخل عنوان الخطبة" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="preacher-name">اسم الخطيب *</label>
+                            <input type="text" id="preacher-name" name="preacher-name" placeholder="أدخل اسم الخطيب" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sermon-date">تاريخ الخطبة *</label>
+                            <input type="date" id="sermon-date" name="sermon-date" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sermon-category">تصنيف الخطبة *</label>
+                        <select id="sermon-category" name="sermon-category" required>
+                            <option value="" disabled selected>اختر تصنيف الخطبة</option>
+                            <option value="العقيدة">العقيدة</option>
+                            <option value="الفقه">الفقه</option>
+                            <option value="الأخلاق">الأخلاق</option>
+                            <option value="السيرة النبوية">السيرة النبوية</option>
+                            <option value="المناسبات">المناسبات</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sermon-excerpt">ملخص الخطبة *</label>
+                        <textarea id="sermon-excerpt" name="sermon-excerpt" placeholder="أدخل ملخصاً مختصراً للخطبة (لا يتجاوز 200 حرف)" maxlength="200" required></textarea>
+                        <div class="char-count"><span id="excerpt-count">0</span>/200</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sermon-content">نص الخطبة *</label>
+                        <textarea id="sermon-content" name="sermon-content" placeholder="أدخل نص الخطبة كاملاً" rows="15" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sermon-references">المراجع (اختياري)</label>
+                        <textarea id="sermon-references" name="sermon-references" placeholder="أدخل مراجع الخطبة (كتب، مقالات، مواقع إلكترونية)" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sermon-tags">الكلمات المفتاحية (اختياري)</label>
+                        <input type="text" id="sermon-tags" name="sermon-tags" placeholder="أدخل كلمات مفتاحية مفصولة بفواصل">
+                        <p class="field-hint">مثال: رمضان، الصيام، العبادة</p>
+                    </div>
+                    
+                    <div class="form-options">
+                        <div class="terms-check">
+                            <input type="checkbox" id="sermon-terms" name="sermon-terms" required>
+                            <label for="sermon-terms">أقر بأن هذه الخطبة من إنشائي أو لدي الإذن بنشرها، وأوافق على <a href="terms.html">شروط النشر</a></label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">إضافة الخطبة</button>
+                        <button type="reset" class="btn btn-outline">إعادة تعيين</button>
+                    </div>
+                </form>
+                
+                <div id="submission-message" class="submission-message" style="display: none;">
+                    <div class="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>تم إضافة الخطبة بنجاح!</h3>
+                        <p>شكراً لمساهمتك. تمت إضافة الخطبة وستظهر في صفحة الخطب الجاهزة.</p>
+                        <div class="success-actions">
+                            <a href="sermons.html" class="btn btn-primary">العودة إلى الخطب الجاهزة</a>
+                            <button id="add-another" class="btn btn-outline">إضافة خطبة أخرى</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>عن تمسيك</h3>
+                    <p>منصة إسلامية شاملة تهدف إلى مساعدة الخطباء والباحثين وعامة المسلمين في الوصول إلى محتوى إسلامي موثوق.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="sermons.html">الخطب الجاهزة</a></li>
+                        <li><a href="prepare_sermon.html">إعداد خطبة</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@tamsik.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 تمسيك. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/add-sermon.js"></script>
+</body>
+</html>

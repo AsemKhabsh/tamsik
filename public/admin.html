@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الإدارة - تمسيك</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/error-handler.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>تمسيك - لوحة الإدارة</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    الرئيسية
+                </a>
+                <a href="profile.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    الملف الشخصي
+                </a>
+                <a href="#" class="nav-link" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    تسجيل الخروج
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <div class="container">
+            <!-- رأس الصفحة -->
+            <div class="page-header">
+                <h1>
+                    <i class="fas fa-tachometer-alt"></i>
+                    لوحة الإدارة
+                </h1>
+                <p>إدارة شاملة لمنصة تمسيك الإسلامية</p>
+            </div>
+
+            <!-- الإحصائيات -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="users-count">0</h3>
+                        <p>المستخدمون</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="sermons-count">0</h3>
+                        <p>الخطب</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="scholars-count">0</h3>
+                        <p>العلماء</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="fatwas-count">0</h3>
+                        <p>الفتاوى</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="lectures-count">0</h3>
+                        <p>المحاضرات</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="thinkers-count">0</h3>
+                        <p>المفكرون</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- أقسام الإدارة -->
+            <div class="admin-sections">
+                <div class="section-grid">
+                    <!-- إدارة المستخدمين -->
+                    <div class="admin-section">
+                        <div class="section-header">
+                            <h2>
+                                <i class="fas fa-users"></i>
+                                إدارة المستخدمين
+                            </h2>
+                        </div>
+                        <div class="section-content">
+                            <div class="section-actions">
+                                <button class="btn btn-primary" onclick="showUsers()">
+                                    <i class="fas fa-list"></i>
+                                    عرض المستخدمين
+                                </button>
+                                <button class="btn btn-success" onclick="addUser()">
+                                    <i class="fas fa-plus"></i>
+                                    إضافة مستخدم
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- إدارة المحتوى -->
+                    <div class="admin-section">
+                        <div class="section-header">
+                            <h2>
+                                <i class="fas fa-file-alt"></i>
+                                إدارة المحتوى
+                            </h2>
+                        </div>
+                        <div class="section-content">
+                            <div class="section-actions">
+                                <button class="btn btn-primary" onclick="manageSermons()">
+                                    <i class="fas fa-microphone"></i>
+                                    إدارة الخطب
+                                </button>
+                                <button class="btn btn-primary" onclick="manageScholars()">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    إدارة العلماء
+                                </button>
+                                <button class="btn btn-primary" onclick="manageFatwas()">
+                                    <i class="fas fa-question-circle"></i>
+                                    إدارة الفتاوى
+                                </button>
+                                <button class="btn btn-primary" onclick="manageLectures()">
+                                    <i class="fas fa-play-circle"></i>
+                                    إدارة المحاضرات
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- إعدادات النظام -->
+                    <div class="admin-section">
+                        <div class="section-header">
+                            <h2>
+                                <i class="fas fa-cogs"></i>
+                                إعدادات النظام
+                            </h2>
+                        </div>
+                        <div class="section-content">
+                            <div class="section-actions">
+                                <button class="btn btn-warning" onclick="systemSettings()">
+                                    <i class="fas fa-cog"></i>
+                                    إعدادات عامة
+                                </button>
+                                <button class="btn btn-info" onclick="backupData()">
+                                    <i class="fas fa-download"></i>
+                                    نسخ احتياطي
+                                </button>
+                                <button class="btn btn-secondary" onclick="viewLogs()">
+                                    <i class="fas fa-file-text"></i>
+                                    سجلات النظام
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- جدول المستخدمين -->
+            <div id="users-table-section" class="table-section" style="display: none;">
+                <div class="section-header">
+                    <h2>
+                        <i class="fas fa-users"></i>
+                        قائمة المستخدمين
+                    </h2>
+                    <button class="btn btn-secondary" onclick="hideUsers()">
+                        <i class="fas fa-times"></i>
+                        إغلاق
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table id="users-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>المعرف</th>
+                                <th>الاسم</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>الدور</th>
+                                <th>تاريخ التسجيل</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body">
+                            <!-- سيتم ملء البيانات بواسطة JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- نافذة منبثقة لإضافة مستخدم -->
+    <div id="add-user-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إضافة مستخدم جديد</h3>
+                <button class="modal-close" onclick="closeAddUserModal()">&times;</button>
+            </div>
+            <form id="add-user-form" class="modal-body">
+                <div class="form-group">
+                    <label for="user-name">الاسم:</label>
+                    <input type="text" id="user-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-email">البريد الإلكتروني:</label>
+                    <input type="email" id="user-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-password">كلمة المرور:</label>
+                    <input type="password" id="user-password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-role">الدور:</label>
+                    <select id="user-role" name="role" required>
+                        <option value="member">عضو</option>
+                        <option value="admin">مدير</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i>
+                        حفظ
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="closeAddUserModal()">
+                        <i class="fas fa-times"></i>
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- تحميل الملفات -->
+    <script src="js/auth-protection.js"></script>
+    <script src="js/error-handler.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,712 @@
+/* أنماط صفحة العلماء والفتاوى */
+
+/* العلماء المميزون */
+.featured-scholars {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    color: var(--dark-color);
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.scholars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.scholar-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.scholar-card:hover {
+    transform: translateY(-5px);
+}
+
+.scholar-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.scholar-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.scholar-name {
+    padding: 15px 15px 5px;
+    font-size: 1.3rem;
+    color: var(--dark-color);
+}
+
+.scholar-title {
+    padding: 0 15px 10px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.scholar-bio {
+    padding: 0 15px 15px;
+    flex-grow: 1;
+}
+
+.scholar-stats {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--border-color);
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.scholar-card .btn {
+    margin: 15px;
+}
+
+/* قسم طرح سؤال جديد */
+.ask-question-section {
+    margin-bottom: 40px;
+}
+
+.ask-question-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.ask-question-card h2 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.ask-question-card h2 i {
+    color: var(--primary-color);
+    margin-left: 10px;
+}
+
+.ask-question-card p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.ask-question-card .btn {
+    margin-bottom: 20px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+}
+
+.login-note {
+    background-color: var(--bg-light);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    display: none; /* سيتم إظهاره للمستخدمين غير المسجلين */
+}
+
+.login-note p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.login-note i {
+    color: var(--primary-color);
+    margin-left: 5px;
+}
+
+.login-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* تصنيفات الفتاوى */
+.fatwa-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.category-btn {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover, .category-btn.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+}
+
+/* رأس الصفحة */
+.page-header {
+    background: linear-gradient(rgba(26, 58, 74, 0.8), rgba(26, 58, 74, 0.8)), url('../images/mosque-interior.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--text-light);
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+}
+
+/* تنسيق حاوية العلماء */
+.scholars-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* الشريط الجانبي */
+.sidebar {
+    flex: 0 0 300px;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.sidebar h3 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* قسم البحث والتصفية */
+.search-filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.search-box {
+    display: flex;
+    flex: 1;
+    max-width: 500px;
+    margin-left: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+}
+
+.search-box button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 0 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.filter-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-group label {
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.filter-group select {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--light-color);
+    font-size: 0.9rem;
+}
+
+/* مربع البحث في الشريط الجانبي */
+.sidebar .search-box {
+    margin-bottom: 25px;
+    display: block;
+    max-width: none;
+    margin-left: 0;
+}
+
+.sidebar .search-input {
+    display: flex;
+    margin-top: 10px;
+}
+
+.sidebar .search-input input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px 0 0 5px;
+    font-size: 0.9rem;
+}
+
+.sidebar .search-input button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 0 15px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+/* تصنيفات الفتاوى */
+.categories, .scholars-list {
+    margin-bottom: 25px;
+}
+
+.category-list, .scholars-filter {
+    list-style: none;
+}
+
+.category-list li, .scholars-filter li {
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-list li:hover, .scholars-filter li:hover {
+    background-color: var(--bg-light);
+}
+
+.category-list li.active, .scholars-filter li.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* قسم طرح سؤال */
+.ask-question {
+    text-align: center;
+    padding: 15px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+}
+
+.ask-question h3 {
+    border-bottom: none;
+    margin-bottom: 10px;
+}
+
+.ask-question button {
+    width: 100%;
+}
+
+/* محتوى الفتاوى */
+.content {
+    flex: 1;
+}
+
+.fatwas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.fatwas-header h2 {
+    color: var(--dark-color);
+}
+
+.filter-options select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--light-color);
+}
+
+/* قائمة الفتاوى */
+.fatwas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.fatwa-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.fatwa-card:hover {
+    transform: translateY(-5px);
+}
+
+.fatwa-header {
+    padding: 15px;
+    background-color: var(--bg-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fatwa-category {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.fatwa-date {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.fatwa-title {
+    padding: 15px 15px 10px;
+    font-size: 1.3rem;
+    color: var(--dark-color);
+}
+
+.fatwa-meta {
+    padding: 0 15px 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.fatwa-meta .scholar-name {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.scholar-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.fatwa-content {
+    padding: 0 15px 15px;
+}
+
+.fatwa-question {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.fatwa-answer {
+    padding: 15px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.fatwa-footer {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.fatwa-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.fatwa-actions button {
+    background: none;
+    border: none;
+    color: #777;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+.fatwa-actions button:hover {
+    color: var(--primary-color);
+}
+
+.fatwa-stats {
+    display: flex;
+    gap: 15px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* نافذة طرح سؤال */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: var(--light-color);
+    margin: 50px auto;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 15px 20px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* إظهار النافذة المنبثقة */
+.modal.show {
+    display: block;
+}
+
+/* ترقيم الصفحات */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.pagination-btn {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 10px;
+    margin: 0 15px;
+}
+
+.page-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-number:hover {
+    background-color: var(--bg-light);
+}
+
+.page-number.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* نافذة عرض الفتوى كاملة */
+.fatwa-modal-content {
+    max-width: 800px;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--border-color);
+}
+
+.fatwa-modal-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.scholar-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.scholar-info .scholar-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.fatwa-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.fatwa-modal-content {
+    margin-bottom: 20px;
+}
+
+.fatwa-modal-content h4 {
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.fatwa-modal-content .fatwa-question {
+    margin-bottom: 20px;
+}
+
+.fatwa-modal-content .fatwa-answer {
+    background-color: var(--bg-light);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.fatwa-modal-stats {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    color: #777;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
