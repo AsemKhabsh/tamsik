@@ -14,7 +14,7 @@
     "deploy": "node scripts/deploy.js",
     "backup": "node scripts/backup.js",
     "test-api": "node scripts/testAPI.js",
-    "postinstall": "node scripts/setupDatabase.js"
+    "postinstall": "node config/sqlite-setup.js && node scripts/setupDatabase.js"
   },
   "keywords": [
     "islamic",
